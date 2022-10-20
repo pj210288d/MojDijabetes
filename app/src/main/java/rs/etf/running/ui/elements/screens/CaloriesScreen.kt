@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.Button
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -144,6 +145,16 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
                     .padding(horizontal = 16.dp)
                     .align(Alignment.CenterVertically),
             )
+        }
+        Button(
+            onClick = {
+                // do the calculation
+            },
+            modifier = Modifier
+                .padding(vertical = 16.dp)
+                .align(Alignment.CenterHorizontally)
+        ) {
+            Text(text = stringResource(id = R.string.calories_button_text_calculate).uppercase())
         }
     }
 }
