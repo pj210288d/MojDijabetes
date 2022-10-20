@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    // https://developer.android.com/kotlin/parcelize
+    id 'kotlin-parcelize'
 }
 
 android {
