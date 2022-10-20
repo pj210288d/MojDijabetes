@@ -24,6 +24,7 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
 
     var weight by remember { mutableStateOf("") }
     var height by remember { mutableStateOf("") }
+    var age by remember { mutableStateOf("") }
 
     // https://developer.android.com/jetpack/compose/layouts/basics
     Row {
@@ -53,14 +54,31 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
             singleLine = true,
             keyboardOptions = KeyboardOptions.Default.copy(
                 keyboardType = KeyboardType.Number,
-                imeAction = ImeAction.Done,
+                imeAction = ImeAction.Next,
             ),
-            keyboardActions = KeyboardActions(onDone = {
-                focusManager.clearFocus()
+            keyboardActions = KeyboardActions(onNext = {
+                focusManager.moveFocus(FocusDirection.Down)
             }),
             modifier = Modifier
                 .weight(1f)
                 .padding(horizontal = 16.dp)
         )
     }
+
+    OutlinedTextField(
+        label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_age)) },
+        value = age,
+        onValueChange = { age = it },
+        trailingIcon = { Text(text = stringResource(id = R.string.calories_edit_text_suffix_age)) },
+        singleLine = true,
+        keyboardOptions = KeyboardOptions.Default.copy(
+            keyboardType = KeyboardType.Number,
+            imeAction = ImeAction.Done,
+        ),
+        keyboardActions = KeyboardActions(onDone = {
+            focusManager.clearFocus()
+        }),
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+    )
 }
