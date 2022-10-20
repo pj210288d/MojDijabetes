@@ -8,6 +8,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import rs.etf.running.ui.elements.RunningApp
 import rs.etf.running.ui.elements.theme.RunningApplicationTheme
 
+const val LOG_TAG = "running-app"
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
