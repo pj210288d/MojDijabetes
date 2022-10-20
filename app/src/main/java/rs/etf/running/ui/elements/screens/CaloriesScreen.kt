@@ -1,9 +1,7 @@
 package rs.etf.running.ui.elements.screens
 
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
@@ -31,8 +29,7 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
                 keyboardType = KeyboardType.Number,
             ),
             modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentHeight()
+                .weight(1f)
                 .padding(horizontal = 16.dp)
         )
 
@@ -46,8 +43,7 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
                 keyboardType = KeyboardType.Number,
             ),
             modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentHeight()
+                .weight(1f)
                 .padding(horizontal = 16.dp)
         )
     }
