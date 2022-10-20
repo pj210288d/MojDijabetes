@@ -70,4 +70,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel:2.6.0-alpha02'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0-alpha02'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0-alpha02'
+
+    // https://developer.android.com/guide/topics/large-screens/support-different-screen-sizes
+    implementation 'androidx.compose.material3:material3-window-size-class:1.0.0-rc01'
 }
