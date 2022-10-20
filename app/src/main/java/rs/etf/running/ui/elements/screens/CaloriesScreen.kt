@@ -12,12 +12,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import rs.etf.running.R
 import rs.etf.running.ui.elements.composables.RadioButtonWithText
+import rs.etf.running.ui.elements.composables.Spinner
 
 @Composable
 fun CaloriesScreen(modifier: Modifier = Modifier) {
@@ -28,9 +30,11 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
     var age by remember { mutableStateOf("") }
     var isMale by remember { mutableStateOf(false) }
     var isFemale by remember { mutableStateOf(false) }
+    var duration by remember { mutableStateOf("") }
+    var metIndex by remember { mutableStateOf(0) }
 
+    val metOptions = stringArrayResource(id = R.array.met_strings).asList()
 
-    // https://developer.android.com/jetpack/compose/layouts/basics
     Column(modifier = modifier) {
         Row {
             OutlinedTextField(
@@ -69,7 +73,6 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
                     .padding(horizontal = 16.dp)
             )
         }
-
         Row {
             OutlinedTextField(
                 label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_age)) },
@@ -79,10 +82,10 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
                 singleLine = true,
                 keyboardOptions = KeyboardOptions.Default.copy(
                     keyboardType = KeyboardType.Number,
-                    imeAction = ImeAction.Done,
+                    imeAction = ImeAction.Next,
                 ),
-                keyboardActions = KeyboardActions(onDone = {
-                    focusManager.clearFocus()
+                keyboardActions = KeyboardActions(onNext = {
+                    focusManager.moveFocus(FocusDirection.Down)
                 }),
                 modifier = Modifier
                     .weight(1f)
@@ -112,6 +115,35 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
                     },
                 )
             }
+        }
+        Row {
+            OutlinedTextField(
+                label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_duration)) },
+                value = duration,
+                onValueChange = { duration = it },
+                trailingIcon = { Text(text = stringResource(id = R.string.calories_edit_text_suffix_duration)) },
+                singleLine = true,
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Done,
+                ),
+                keyboardActions = KeyboardActions(onDone = {
+                    focusManager.clearFocus()
+                }),
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(horizontal = 16.dp)
+                    .align(Alignment.CenterVertically)
+            )
+            Spinner(
+                value = metOptions[metIndex],
+                onSelect = { metOption -> metIndex = metOptions.indexOfFirst { it == metOption } },
+                options = metOptions,
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(horizontal = 16.dp)
+                    .align(Alignment.CenterVertically),
+            )
         }
     }
 }
