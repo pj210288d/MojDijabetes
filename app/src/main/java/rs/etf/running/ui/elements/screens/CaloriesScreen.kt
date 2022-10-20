@@ -10,6 +10,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
@@ -30,16 +31,16 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
     val focusManager = LocalFocusManager.current
     val context = LocalContext.current
 
-    var weight by remember { mutableStateOf("") }
-    var height by remember { mutableStateOf("") }
-    var age by remember { mutableStateOf("") }
-    var isMale by remember { mutableStateOf(false) }
-    var isFemale by remember { mutableStateOf(false) }
-    var duration by remember { mutableStateOf("") }
-    var metIndex by remember { mutableStateOf(0) }
+    var weight by rememberSaveable { mutableStateOf("") }
+    var height by rememberSaveable { mutableStateOf("") }
+    var age by rememberSaveable { mutableStateOf("") }
+    var isMale by rememberSaveable { mutableStateOf(false) }
+    var isFemale by rememberSaveable { mutableStateOf(false) }
+    var duration by rememberSaveable { mutableStateOf("") }
+    var metIndex by rememberSaveable { mutableStateOf(0) }
 
-    var caloriesBurned by remember { mutableStateOf<Double?>(null) }
-    var caloriesNeeded by remember { mutableStateOf<Double?>(null) }
+    var caloriesBurned by rememberSaveable { mutableStateOf<Double?>(null) }
+    var caloriesNeeded by rememberSaveable { mutableStateOf<Double?>(null) }
 
     val metOptions = stringArrayResource(id = R.array.met_strings).asList()
 
