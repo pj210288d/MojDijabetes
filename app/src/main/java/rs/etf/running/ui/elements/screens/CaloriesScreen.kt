@@ -152,7 +152,28 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
         }
         Button(
             onClick = {
-                // do the calculation
+                try {
+                    // https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to-double.html
+                    val weightAsDouble = weight.toDouble()
+                    val heightAsDouble = height.toDouble()
+                    val ageAsDouble = age.toDouble()
+                    val durationAsDouble = duration.toDouble()
+
+                    val metValues = arrayOf(6.0, 8.3, 9.0, 9.4, 9.8, 10.5, 11.5, 11.8, 12.8)
+                    val metValue = metValues[metIndex]
+
+                    val caloriesNeededCalculated = if (isMale)
+                        66 + 13.7 * weightAsDouble + 5 * heightAsDouble - 6.8 * ageAsDouble
+                    else
+                        655.1 + 9.6 * weightAsDouble + 1.9 * heightAsDouble - 4.7 * ageAsDouble
+                    val caloriesBurnedCalculated =
+                        durationAsDouble * metValue * 3.5 * weightAsDouble / 200
+
+                    caloriesBurned = caloriesBurnedCalculated
+                    caloriesNeeded = caloriesNeededCalculated
+                } catch (e: Exception) {
+                    // report error
+                }
             },
             modifier = Modifier
                 .padding(vertical = 16.dp)
