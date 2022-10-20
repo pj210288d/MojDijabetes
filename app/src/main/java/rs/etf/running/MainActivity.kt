@@ -14,6 +14,7 @@ const val LOG_TAG = "running-app"
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        lifecycle.addObserver(MainLifecycleObserver())
         setContent {
             RunningApplicationTheme {
                 // https://developer.android.com/guide/topics/large-screens/support-different-screen-sizes
