@@ -19,6 +19,7 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
         label = { Text(text = "Tezina") },
         value = weight,
         onValueChange = { newWeightValue -> weight = newWeightValue },
+        trailingIcon = { Text(text = "kg") },
         singleLine = true,
         keyboardOptions = KeyboardOptions.Default.copy(
             keyboardType = KeyboardType.Number,
