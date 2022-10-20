@@ -1,5 +1,6 @@
 package rs.etf.running.ui.elements.screens
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -12,6 +13,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
@@ -26,6 +28,7 @@ import rs.etf.running.ui.elements.composables.Spinner
 @Composable
 fun CaloriesScreen(modifier: Modifier = Modifier) {
     val focusManager = LocalFocusManager.current
+    val context = LocalContext.current
 
     var weight by remember { mutableStateOf("") }
     var height by remember { mutableStateOf("") }
@@ -172,7 +175,9 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
                     caloriesBurned = caloriesBurnedCalculated
                     caloriesNeeded = caloriesNeededCalculated
                 } catch (e: Exception) {
-                    // report error
+                    // https://developer.android.com/guide/topics/ui/notifiers/toasts
+                    Toast.makeText(context, R.string.calories_toast_text_error, Toast.LENGTH_SHORT)
+                        .show()
                 }
             },
             modifier = Modifier
