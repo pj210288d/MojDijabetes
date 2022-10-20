@@ -16,6 +16,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import rs.etf.running.R
+import rs.etf.running.ui.elements.composables.RadioButtonWithText
 
 @Composable
 fun CaloriesScreen(modifier: Modifier = Modifier) {
@@ -24,6 +25,9 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
     var weight by remember { mutableStateOf("") }
     var height by remember { mutableStateOf("") }
     var age by remember { mutableStateOf("") }
+    var isMale by remember { mutableStateOf(false) }
+    var isFemale by remember { mutableStateOf(false) }
+
 
     // https://developer.android.com/jetpack/compose/layouts/basics
     Column(modifier = modifier) {
@@ -65,21 +69,47 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
             )
         }
 
-        OutlinedTextField(
-            label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_age)) },
-            value = age,
-            onValueChange = { age = it },
-            trailingIcon = { Text(text = stringResource(id = R.string.calories_edit_text_suffix_age)) },
-            singleLine = true,
-            keyboardOptions = KeyboardOptions.Default.copy(
-                keyboardType = KeyboardType.Number,
-                imeAction = ImeAction.Done,
-            ),
-            keyboardActions = KeyboardActions(onDone = {
-                focusManager.clearFocus()
-            }),
-            modifier = Modifier
-                .padding(horizontal = 16.dp)
-        )
+        Row {
+            OutlinedTextField(
+                label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_age)) },
+                value = age,
+                onValueChange = { age = it },
+                trailingIcon = { Text(text = stringResource(id = R.string.calories_edit_text_suffix_age)) },
+                singleLine = true,
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Done,
+                ),
+                keyboardActions = KeyboardActions(onDone = {
+                    focusManager.clearFocus()
+                }),
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(horizontal = 16.dp)
+            )
+
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(horizontal = 16.dp)
+            ) {
+                RadioButtonWithText(
+                    text = stringResource(id = R.string.calories_radio_button_text_male),
+                    selected = isMale,
+                    onClick = {
+                        isMale = true
+                        isFemale = false
+                    },
+                )
+                RadioButtonWithText(
+                    text = stringResource(id = R.string.calories_radio_button_text_female),
+                    selected = isFemale,
+                    onClick = {
+                        isFemale = true
+                        isMale = false
+                    },
+                )
+            }
+        }
     }
 }
