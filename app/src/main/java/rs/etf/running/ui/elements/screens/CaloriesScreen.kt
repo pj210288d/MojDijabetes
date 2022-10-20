@@ -18,6 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import rs.etf.running.R
 import rs.etf.running.ui.elements.composables.RadioButtonWithText
 import rs.etf.running.ui.elements.composables.Spinner
@@ -33,6 +34,9 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
     var isFemale by remember { mutableStateOf(false) }
     var duration by remember { mutableStateOf("") }
     var metIndex by remember { mutableStateOf(0) }
+
+    var caloriesBurned by remember { mutableStateOf<Double?>(null) }
+    var caloriesNeeded by remember { mutableStateOf<Double?>(null) }
 
     val metOptions = stringArrayResource(id = R.array.met_strings).asList()
 
@@ -155,6 +159,32 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
                 .align(Alignment.CenterHorizontally)
         ) {
             Text(text = stringResource(id = R.string.calories_button_text_calculate).uppercase())
+        }
+        if (caloriesBurned != null) {
+            Text(
+                // https://developer.android.com/jetpack/compose/resources#strings
+                text = stringResource(
+                    id = R.string.calories_burned,
+                    "%.2f".format(caloriesBurned)
+                ),
+                fontSize = 20.sp,
+                modifier = Modifier
+                    .padding(vertical = 16.dp)
+                    .align(Alignment.CenterHorizontally),
+            )
+        }
+        if (caloriesNeeded != null) {
+            Text(
+                // https://developer.android.com/jetpack/compose/resources#strings
+                text = stringResource(
+                    id = R.string.calories_needed,
+                    "%.2f".format(caloriesNeeded)
+                ),
+                fontSize = 20.sp,
+                modifier = Modifier
+                    .padding(vertical = 16.dp)
+                    .align(Alignment.CenterHorizontally),
+            )
         }
     }
 }
