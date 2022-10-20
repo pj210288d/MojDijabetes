@@ -8,18 +8,20 @@ import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import rs.etf.running.R
 
 @Composable
 fun CaloriesScreen(modifier: Modifier = Modifier) {
     var weight by remember { mutableStateOf("") }
 
     OutlinedTextField(
-        label = { Text(text = "Tezina") },
+        label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_weight)) },
         value = weight,
         onValueChange = { newWeightValue -> weight = newWeightValue },
-        trailingIcon = { Text(text = "kg") },
+        trailingIcon = { Text(text = stringResource(id = R.string.calories_edit_text_suffix_weight)) },
         singleLine = true,
         keyboardOptions = KeyboardOptions.Default.copy(
             keyboardType = KeyboardType.Number,

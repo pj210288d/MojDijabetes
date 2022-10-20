@@ -1,3 +1,37 @@
 <resources>
-    <string name="app_name">RunningApplication</string>
+    <string name="app_name">Running</string>
+
+    <!-- Calories -->
+    <string name="calories_toolbar_title">Calories Calculator</string>
+    <string name="calories_edit_text_hint_weight">Weight</string>
+    <string name="calories_edit_text_hint_height">Height</string>
+    <string name="calories_edit_text_hint_age">Age</string>
+    <string name="calories_radio_button_text_male">Male</string>
+    <string name="calories_radio_button_text_female">Female</string>
+    <string name="calories_edit_text_hint_duration">Duration</string>
+    <string name="calories_button_text_calculate">Calculate</string>
+    <string name="calories_button_text_share">Share</string>
+    <string name="calories_edit_text_suffix_weight">kg</string>
+    <string name="calories_edit_text_suffix_height">cm</string>
+    <string name="calories_edit_text_suffix_age">year</string>
+    <string name="calories_edit_text_suffix_duration">min</string>
+    <!--    https://developer.android.com/jetpack/compose/resources#strings-->
+    <string name="calories_burned">Burned: %1$s kcal</string>
+    <string name="calories_needed">Needed: %1$s kcal</string>
+    <string name="calories_toast_text_error">Wrong values!</string>
+    <string name="calories_intent_mail_subject">Running Application</string>
+    <string name="calories_intent_mail_text">I have burned %1$s kcal!</string>
+    <string name="calories_intent_chooser_title">Choose application to share the achievement</string>
+    <!--     MET (Metabolic equivalent of task) -->
+    <string-array name="met_strings">
+        <item>8 min/km</item>
+        <item>7,5 min/km</item>
+        <item>7 min/km</item>
+        <item>6,5 min/km</item>
+        <item>6 min/km</item>
+        <item>5,5 min/km</item>
+        <item>5 min/km</item>
+        <item>4,5 min/km</item>
+        <item>4 min/km</item>
+    </string-array>
 </resources>

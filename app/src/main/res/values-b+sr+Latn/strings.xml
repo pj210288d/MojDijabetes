@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Trčanje</string>
+
+    <!-- Calories -->
+    <string name="calories_toolbar_title">Kalkulator kalorija</string>
+    <string name="calories_edit_text_hint_weight">Težina</string>
+    <string name="calories_edit_text_hint_height">Visina</string>
+    <string name="calories_edit_text_hint_age">Starost</string>
+    <string name="calories_radio_button_text_male">Muško</string>
+    <string name="calories_radio_button_text_female">Žensko</string>
+    <string name="calories_edit_text_hint_duration">Trajanje</string>
+    <string name="calories_button_text_calculate">Izračunaj</string>
+    <string name="calories_button_text_share">Podeli</string>
+    <string name="calories_edit_text_suffix_weight">kg</string>
+    <string name="calories_edit_text_suffix_height">cm</string>
+    <string name="calories_edit_text_suffix_age">god</string>
+    <string name="calories_edit_text_suffix_duration">min</string>
+    <!--    https://developer.android.com/jetpack/compose/resources#strings-->
+    <string name="calories_burned">Potrošeno: %1$s kcal</string>
+    <string name="calories_needed">Potrebno: %1$s kcal</string>
+    <string name="calories_toast_text_error">Pogrešne vrednosti!</string>
+    <string name="calories_intent_mail_subject">Aplikacija za trčanje</string>
+    <string name="calories_intent_mail_text">Potrošio sam %1$s kcal!</string>
+    <string name="calories_intent_chooser_title">Izaberite aplikaciju za deljenje postignutog uspeha</string>
+    <!--     MET (Metabolic equivalent of task) -->
+    <string-array name="met_strings">
+        <item>8 min/km</item>
+        <item>7,5 min/km</item>
+        <item>7 min/km</item>
+        <item>6,5 min/km</item>
+        <item>6 min/km</item>
+        <item>5,5 min/km</item>
+        <item>5 min/km</item>
+        <item>4,5 min/km</item>
+        <item>4 min/km</item>
+    </string-array>
+</resources>
