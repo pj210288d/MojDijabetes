@@ -3,6 +3,7 @@ package rs.etf.running.ui.elements.screens
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
@@ -34,21 +35,62 @@ fun CaloriesScreen(
     modifier: Modifier = Modifier,
     caloriesViewModel: CaloriesViewModel = viewModel(),
 ) {
-    val focusManager = LocalFocusManager.current
-    val context = LocalContext.current
-
-    // https://developer.android.com/jetpack/compose/libraries#streams
-    // https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary
     val uiState by caloriesViewModel.uiState.collectAsState()
+
+    Column(modifier = modifier.verticalScroll(rememberScrollState())) {
+        CaloriesInputs(
+            weight = uiState.weight,
+            onWeightChange = caloriesViewModel::setWeight,
+            height = uiState.height,
+            onHeightChange = caloriesViewModel::setHeight,
+            age = uiState.age,
+            onAgeChange = caloriesViewModel::setAge,
+            isMale = uiState.isMale,
+            onIsMaleClick = caloriesViewModel::setIsMale,
+            isFemale = uiState.isFemale,
+            onIsFemaleClick = caloriesViewModel::setIsFemale,
+            duration = uiState.duration,
+            onDurationChange = caloriesViewModel::setDuration,
+            metIndex = uiState.metIndex,
+            onMetIndexChange = caloriesViewModel::setMetIndex,
+        )
+        CaloriesCalculation(
+            caloriesBurned = uiState.caloriesBurned,
+            caloriesNeeded = uiState.caloriesNeeded,
+            calculateCalories = caloriesViewModel::calculateCalories,
+            modifier = Modifier.fillMaxWidth()
+        )
+    }
+}
+
+@Composable
+fun CaloriesInputs(
+    weight: String,
+    onWeightChange: (String) -> Unit,
+    height: String,
+    onHeightChange: (String) -> Unit,
+    age: String,
+    onAgeChange: (String) -> Unit,
+    isMale: Boolean,
+    onIsMaleClick: () -> Unit,
+    isFemale: Boolean,
+    onIsFemaleClick: () -> Unit,
+    duration: String,
+    onDurationChange: (String) -> Unit,
+    metIndex: Int,
+    onMetIndexChange: (Int) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val focusManager = LocalFocusManager.current
 
     val metOptions = stringArrayResource(id = R.array.met_strings).asList()
 
-    Column(modifier = modifier.verticalScroll(rememberScrollState())) {
+    Column(modifier = modifier) {
         Row(modifier = Modifier.padding(vertical = 8.dp)) {
             OutlinedTextField(
                 label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_weight)) },
-                value = uiState.weight,
-                onValueChange = caloriesViewModel::setWeight,
+                value = weight,
+                onValueChange = onWeightChange,
                 trailingIcon = { Text(text = stringResource(id = R.string.calories_edit_text_suffix_weight)) },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions.Default.copy(
@@ -62,11 +104,10 @@ fun CaloriesScreen(
                     .weight(1f)
                     .padding(horizontal = 16.dp)
             )
-
             OutlinedTextField(
                 label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_height)) },
-                value = uiState.height,
-                onValueChange = caloriesViewModel::setHeight,
+                value = height,
+                onValueChange = onHeightChange,
                 trailingIcon = { Text(text = stringResource(id = R.string.calories_edit_text_suffix_height)) },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions.Default.copy(
@@ -84,8 +125,8 @@ fun CaloriesScreen(
         Row(modifier = Modifier.padding(vertical = 8.dp)) {
             OutlinedTextField(
                 label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_age)) },
-                value = uiState.age,
-                onValueChange = caloriesViewModel::setAge,
+                value = age,
+                onValueChange = onAgeChange,
                 trailingIcon = { Text(text = stringResource(id = R.string.calories_edit_text_suffix_age)) },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions.Default.copy(
@@ -100,7 +141,6 @@ fun CaloriesScreen(
                     .padding(horizontal = 16.dp)
                     .align(Alignment.CenterVertically)
             )
-
             Column(
                 modifier = Modifier
                     .weight(1f)
@@ -108,21 +148,21 @@ fun CaloriesScreen(
             ) {
                 RadioButtonWithText(
                     text = stringResource(id = R.string.calories_radio_button_text_male),
-                    selected = uiState.isMale,
-                    onClick = caloriesViewModel::setIsMale,
+                    selected = isMale,
+                    onClick = onIsMaleClick,
                 )
                 RadioButtonWithText(
                     text = stringResource(id = R.string.calories_radio_button_text_female),
-                    selected = uiState.isFemale,
-                    onClick = caloriesViewModel::setIsFemale,
+                    selected = isFemale,
+                    onClick = onIsFemaleClick,
                 )
             }
         }
         Row(modifier = Modifier.padding(vertical = 8.dp)) {
             OutlinedTextField(
                 label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_duration)) },
-                value = uiState.duration,
-                onValueChange = caloriesViewModel::setDuration,
+                value = duration,
+                onValueChange = onDurationChange,
                 trailingIcon = { Text(text = stringResource(id = R.string.calories_edit_text_suffix_duration)) },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions.Default.copy(
@@ -138,8 +178,8 @@ fun CaloriesScreen(
                     .align(Alignment.CenterVertically)
             )
             Spinner(
-                value = metOptions[uiState.metIndex],
-                onSelect = { metOption -> caloriesViewModel.setMetIndex(metOptions.indexOfFirst { it == metOption }) },
+                value = metOptions[metIndex],
+                onSelect = { metOption -> onMetIndexChange(metOptions.indexOfFirst { it == metOption }) },
                 options = metOptions,
                 modifier = Modifier
                     .weight(1f)
@@ -147,9 +187,22 @@ fun CaloriesScreen(
                     .align(Alignment.CenterVertically),
             )
         }
+    }
+}
+
+@Composable
+fun CaloriesCalculation(
+    caloriesBurned: Double?,
+    caloriesNeeded: Double?,
+    calculateCalories: () -> Boolean,
+    modifier: Modifier = Modifier
+) {
+    val context = LocalContext.current
+
+    Column(modifier = modifier) {
         Button(
             onClick = {
-                if (!caloriesViewModel.calculateCalories()) {
+                if (!calculateCalories()) {
                     Toast.makeText(context, R.string.calories_toast_text_error, Toast.LENGTH_SHORT)
                         .show()
                 }
@@ -160,11 +213,11 @@ fun CaloriesScreen(
         ) {
             Text(text = stringResource(id = R.string.calories_button_text_calculate).uppercase())
         }
-        if (uiState.caloriesBurned != null) {
+        if (caloriesBurned != null) {
             Text(
                 text = stringResource(
                     id = R.string.calories_burned,
-                    "%.2f".format(uiState.caloriesBurned)
+                    "%.2f".format(caloriesBurned)
                 ),
                 fontSize = 20.sp,
                 modifier = Modifier
@@ -172,11 +225,11 @@ fun CaloriesScreen(
                     .align(Alignment.CenterHorizontally),
             )
         }
-        if (uiState.caloriesNeeded != null) {
+        if (caloriesNeeded != null) {
             Text(
                 text = stringResource(
                     id = R.string.calories_needed,
-                    "%.2f".format(uiState.caloriesNeeded)
+                    "%.2f".format(caloriesNeeded)
                 ),
                 fontSize = 20.sp,
                 modifier = Modifier
