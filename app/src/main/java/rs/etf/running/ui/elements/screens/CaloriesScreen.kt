@@ -2,18 +2,26 @@ package rs.etf.running.ui.elements.screens
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusDirection
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import rs.etf.running.R
 
 @Composable
 fun CaloriesScreen(modifier: Modifier = Modifier) {
+    // https://developer.android.com/jetpack/compose/compositionlocal
+    // https://developer.android.com/reference/kotlin/androidx/compose/ui/platform/package-summary
+    val focusManager = LocalFocusManager.current
+
     var weight by remember { mutableStateOf("") }
     var height by remember { mutableStateOf("") }
 
@@ -27,7 +35,11 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
             singleLine = true,
             keyboardOptions = KeyboardOptions.Default.copy(
                 keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Next,
             ),
+            keyboardActions = KeyboardActions(onNext = {
+                focusManager.moveFocus(FocusDirection.Right)
+            }),
             modifier = Modifier
                 .weight(1f)
                 .padding(horizontal = 16.dp)
@@ -41,7 +53,11 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
             singleLine = true,
             keyboardOptions = KeyboardOptions.Default.copy(
                 keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Done,
             ),
+            keyboardActions = KeyboardActions(onDone = {
+                focusManager.clearFocus()
+            }),
             modifier = Modifier
                 .weight(1f)
                 .padding(horizontal = 16.dp)
