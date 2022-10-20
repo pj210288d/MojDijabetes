@@ -8,6 +8,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.platform.LocalFocusManager
@@ -86,6 +87,7 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .weight(1f)
                     .padding(horizontal = 16.dp)
+                    .align(Alignment.CenterVertically)
             )
 
             Column(
