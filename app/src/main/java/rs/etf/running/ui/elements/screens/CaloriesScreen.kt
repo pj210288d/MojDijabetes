@@ -17,13 +17,13 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
     Log.d(LOG_TAG, "(re)composition")
 
     // *** NOT GOOD ENOUGH ***
-    val (weightValue, setWeightValue) = mutableStateOf("")
+    val weightState = mutableStateOf("")
 
     // https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary
     OutlinedTextField(
         label = { Text(text = "Tezina") },
-        value = weightValue,
-        onValueChange = { newWeightValue -> setWeightValue(newWeightValue) },
+        value = weightState.value,
+        onValueChange = { newWeightValue -> weightState.value = newWeightValue },
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
