@@ -1,4 +1,4 @@
-package rs.etf.running.ui.theme
+package rs.etf.running.ui.elements.theme
 
 import androidx.compose.ui.graphics.Color
 
