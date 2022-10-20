@@ -6,10 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import rs.etf.running.LOG_TAG
@@ -18,8 +15,8 @@ import rs.etf.running.LOG_TAG
 fun CaloriesScreen(modifier: Modifier = Modifier) {
     Log.d(LOG_TAG, "(re)composition")
 
-    // *** NOT GOOD ENOUGH ***
-    var weight by mutableStateOf("")
+    // https://developer.android.com/jetpack/compose/state
+    var weight by remember { mutableStateOf("") }
 
     // https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary
     OutlinedTextField(
