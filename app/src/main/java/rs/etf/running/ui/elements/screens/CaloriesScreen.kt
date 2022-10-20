@@ -4,8 +4,10 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
@@ -29,8 +31,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun CaloriesScreen(
-    caloriesViewModel: CaloriesViewModel = viewModel(),
     modifier: Modifier = Modifier,
+    caloriesViewModel: CaloriesViewModel = viewModel(),
 ) {
     val focusManager = LocalFocusManager.current
     val context = LocalContext.current
@@ -41,7 +43,7 @@ fun CaloriesScreen(
 
     val metOptions = stringArrayResource(id = R.array.met_strings).asList()
 
-    Column(modifier = modifier) {
+    Column(modifier = modifier.verticalScroll(rememberScrollState())) {
         Row(modifier = Modifier.padding(vertical = 8.dp)) {
             OutlinedTextField(
                 label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_weight)) },
