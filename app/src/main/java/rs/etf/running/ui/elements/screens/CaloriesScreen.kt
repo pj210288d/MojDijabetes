@@ -7,7 +7,9 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import rs.etf.running.LOG_TAG
@@ -17,13 +19,13 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
     Log.d(LOG_TAG, "(re)composition")
 
     // *** NOT GOOD ENOUGH ***
-    val weightState = mutableStateOf("")
+    var weight by mutableStateOf("")
 
     // https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary
     OutlinedTextField(
         label = { Text(text = "Tezina") },
-        value = weightState.value,
-        onValueChange = { newWeightValue -> weightState.value = newWeightValue },
+        value = weight,
+        onValueChange = { newWeightValue -> weight = newWeightValue },
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
