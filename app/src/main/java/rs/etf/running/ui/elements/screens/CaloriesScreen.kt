@@ -16,12 +16,28 @@ import rs.etf.running.R
 @Composable
 fun CaloriesScreen(modifier: Modifier = Modifier) {
     var weight by remember { mutableStateOf("") }
+    var height by remember { mutableStateOf("") }
 
     OutlinedTextField(
         label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_weight)) },
         value = weight,
-        onValueChange = { newWeightValue -> weight = newWeightValue },
+        onValueChange = { weight = it },
         trailingIcon = { Text(text = stringResource(id = R.string.calories_edit_text_suffix_weight)) },
+        singleLine = true,
+        keyboardOptions = KeyboardOptions.Default.copy(
+            keyboardType = KeyboardType.Number,
+        ),
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .padding(horizontal = 16.dp)
+    )
+
+    OutlinedTextField(
+        label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_height)) },
+        value = height,
+        onValueChange = { height = it },
+        trailingIcon = { Text(text = stringResource(id = R.string.calories_edit_text_suffix_height)) },
         singleLine = true,
         keyboardOptions = KeyboardOptions.Default.copy(
             keyboardType = KeyboardType.Number,
