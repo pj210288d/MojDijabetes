@@ -1,5 +1,6 @@
 package rs.etf.running.ui.elements.screens
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
@@ -18,8 +19,6 @@ import rs.etf.running.R
 
 @Composable
 fun CaloriesScreen(modifier: Modifier = Modifier) {
-    // https://developer.android.com/jetpack/compose/compositionlocal
-    // https://developer.android.com/reference/kotlin/androidx/compose/ui/platform/package-summary
     val focusManager = LocalFocusManager.current
 
     var weight by remember { mutableStateOf("") }
@@ -27,58 +26,60 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
     var age by remember { mutableStateOf("") }
 
     // https://developer.android.com/jetpack/compose/layouts/basics
-    Row {
-        OutlinedTextField(
-            label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_weight)) },
-            value = weight,
-            onValueChange = { weight = it },
-            trailingIcon = { Text(text = stringResource(id = R.string.calories_edit_text_suffix_weight)) },
-            singleLine = true,
-            keyboardOptions = KeyboardOptions.Default.copy(
-                keyboardType = KeyboardType.Number,
-                imeAction = ImeAction.Next,
-            ),
-            keyboardActions = KeyboardActions(onNext = {
-                focusManager.moveFocus(FocusDirection.Right)
-            }),
-            modifier = Modifier
-                .weight(1f)
-                .padding(horizontal = 16.dp)
-        )
+    Column(modifier = modifier) {
+        Row {
+            OutlinedTextField(
+                label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_weight)) },
+                value = weight,
+                onValueChange = { weight = it },
+                trailingIcon = { Text(text = stringResource(id = R.string.calories_edit_text_suffix_weight)) },
+                singleLine = true,
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Next,
+                ),
+                keyboardActions = KeyboardActions(onNext = {
+                    focusManager.moveFocus(FocusDirection.Right)
+                }),
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(horizontal = 16.dp)
+            )
+
+            OutlinedTextField(
+                label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_height)) },
+                value = height,
+                onValueChange = { height = it },
+                trailingIcon = { Text(text = stringResource(id = R.string.calories_edit_text_suffix_height)) },
+                singleLine = true,
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Next,
+                ),
+                keyboardActions = KeyboardActions(onNext = {
+                    focusManager.moveFocus(FocusDirection.Down)
+                }),
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(horizontal = 16.dp)
+            )
+        }
 
         OutlinedTextField(
-            label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_height)) },
-            value = height,
-            onValueChange = { height = it },
-            trailingIcon = { Text(text = stringResource(id = R.string.calories_edit_text_suffix_height)) },
+            label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_age)) },
+            value = age,
+            onValueChange = { age = it },
+            trailingIcon = { Text(text = stringResource(id = R.string.calories_edit_text_suffix_age)) },
             singleLine = true,
             keyboardOptions = KeyboardOptions.Default.copy(
                 keyboardType = KeyboardType.Number,
-                imeAction = ImeAction.Next,
+                imeAction = ImeAction.Done,
             ),
-            keyboardActions = KeyboardActions(onNext = {
-                focusManager.moveFocus(FocusDirection.Down)
+            keyboardActions = KeyboardActions(onDone = {
+                focusManager.clearFocus()
             }),
             modifier = Modifier
-                .weight(1f)
                 .padding(horizontal = 16.dp)
         )
     }
-
-    OutlinedTextField(
-        label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_age)) },
-        value = age,
-        onValueChange = { age = it },
-        trailingIcon = { Text(text = stringResource(id = R.string.calories_edit_text_suffix_age)) },
-        singleLine = true,
-        keyboardOptions = KeyboardOptions.Default.copy(
-            keyboardType = KeyboardType.Number,
-            imeAction = ImeAction.Done,
-        ),
-        keyboardActions = KeyboardActions(onDone = {
-            focusManager.clearFocus()
-        }),
-        modifier = Modifier
-            .padding(horizontal = 16.dp)
-    )
 }
