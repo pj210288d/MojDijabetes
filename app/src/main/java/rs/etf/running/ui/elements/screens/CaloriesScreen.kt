@@ -1,5 +1,8 @@
 package rs.etf.running.ui.elements.screens
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.os.Bundle
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,6 +27,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
 import rs.etf.running.R
 import rs.etf.running.ui.elements.composables.RadioButtonWithText
 import rs.etf.running.ui.elements.composables.Spinner
@@ -65,9 +69,11 @@ fun CaloriesScreen(
         }
     } else {
         Row {
-            Column(modifier = modifier
-                .weight(2f)
-                .verticalScroll(rememberScrollState())) {
+            Column(
+                modifier = modifier
+                    .weight(2f)
+                    .verticalScroll(rememberScrollState())
+            ) {
                 CaloriesInputs(
                     weight = uiState.weight,
                     onWeightChange = caloriesViewModel::setWeight,
@@ -85,9 +91,11 @@ fun CaloriesScreen(
                     onMetIndexChange = caloriesViewModel::setMetIndex,
                 )
             }
-            Column(modifier = modifier
-                .weight(1f)
-                .verticalScroll(rememberScrollState())) {
+            Column(
+                modifier = modifier
+                    .weight(1f)
+                    .verticalScroll(rememberScrollState())
+            ) {
                 CaloriesCalculation(
                     caloriesBurned = uiState.caloriesBurned,
                     caloriesNeeded = uiState.caloriesNeeded,
@@ -235,6 +243,11 @@ fun CaloriesCalculation(
 ) {
     val context = LocalContext.current
 
+    val mailSubject = stringResource(id = R.string.calories_intent_mail_subject)
+    val mailText = stringResource(id = R.string.calories_intent_mail_text, caloriesBurned ?: 0)
+    val chooserTitle = stringResource(id = R.string.calories_intent_chooser_title)
+
+
     Column(modifier = modifier) {
         Button(
             onClick = {
@@ -248,6 +261,29 @@ fun CaloriesCalculation(
                 .align(Alignment.CenterHorizontally)
         ) {
             Text(text = stringResource(id = R.string.calories_button_text_calculate).uppercase())
+        }
+        if (caloriesBurned != null) {
+            Button(
+                onClick = {
+                    // https://developer.android.com/training/basics/intents/sending
+                    val intent = Intent(Intent.ACTION_SEND).apply {
+                        type = "text/plain"
+                        putExtra(Intent.EXTRA_SUBJECT, mailSubject)
+                        putExtra(Intent.EXTRA_TEXT, mailText)
+                    }
+                    val chooser = Intent.createChooser(intent, chooserTitle)
+                    try {
+                        ContextCompat.startActivity(context, chooser, Bundle())
+                    } catch (e: ActivityNotFoundException) {
+                        // nothing
+                    }
+                },
+                modifier = Modifier
+                    .padding(vertical = 16.dp)
+                    .align(Alignment.CenterHorizontally)
+            ) {
+                Text(text = stringResource(id = R.string.calories_button_text_share).uppercase())
+            }
         }
         if (caloriesBurned != null) {
             Text(
