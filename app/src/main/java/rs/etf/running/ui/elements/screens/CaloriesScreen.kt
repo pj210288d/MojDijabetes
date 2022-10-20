@@ -36,7 +36,7 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
     val metOptions = stringArrayResource(id = R.array.met_strings).asList()
 
     Column(modifier = modifier) {
-        Row {
+        Row(modifier = Modifier.padding(vertical = 8.dp)) {
             OutlinedTextField(
                 label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_weight)) },
                 value = weight,
@@ -73,7 +73,7 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
                     .padding(horizontal = 16.dp)
             )
         }
-        Row {
+        Row(modifier = Modifier.padding(vertical = 8.dp)) {
             OutlinedTextField(
                 label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_age)) },
                 value = age,
@@ -116,7 +116,7 @@ fun CaloriesScreen(modifier: Modifier = Modifier) {
                 )
             }
         }
-        Row {
+        Row(modifier = Modifier.padding(vertical = 8.dp)) {
             OutlinedTextField(
                 label = { Text(text = stringResource(id = R.string.calories_edit_text_hint_duration)) },
                 value = duration,
