@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'rs.etf.running'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "rs.etf.running"
         minSdk 26
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -60,4 +60,12 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
+
+    // https://developer.android.com/reference/androidx/lifecycle/package-summary
+    // https://maven.google.com/web/index.html?q=androidx.lifecycle#androidx.lifecycle
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.6.0-alpha02'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.0-alpha02'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.6.0-alpha02'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0-alpha02'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0-alpha02'
 }
