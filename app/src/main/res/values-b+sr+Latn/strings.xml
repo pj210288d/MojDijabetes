@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">Trčanje</string>
 
+    <!-- Main -->
+    <string name="main_button_text_calories">Izračunaj kalorije</string>
+    <string name="main_button_text_browse">Pretraži rute</string>
+
+    <!-- Routes -->
+    <string name="route_browse_toolbar_title">Rute za šetanje</string>
+    <string name="route_view_holder_button_text_description">Opis</string>
+    <string name="route_view_holder_button_text_location">Lokacija</string>
+    <string name="route_details_toolbar_title">Detalji rute</string>
+
     <!-- Calories -->
     <string name="calories_toolbar_title">Kalkulator kalorija</string>
     <string name="calories_edit_text_hint_weight">Težina</string>

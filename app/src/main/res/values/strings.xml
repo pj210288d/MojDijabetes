@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">Running</string>
 
+    <!-- Main -->
+    <string name="main_button_text_calories">Calculate calories</string>
+    <string name="main_button_text_browse">Browse routes</string>
+
+    <!-- Routes -->
+    <string name="route_browse_toolbar_title">Walking Routes</string>
+    <string name="route_view_holder_button_text_description">Description</string>
+    <string name="route_view_holder_button_text_location">Location</string>
+    <string name="route_details_toolbar_title">Route Details</string>
+
     <!-- Calories -->
     <string name="calories_toolbar_title">Calories Calculator</string>
     <string name="calories_edit_text_hint_weight">Weight</string>
