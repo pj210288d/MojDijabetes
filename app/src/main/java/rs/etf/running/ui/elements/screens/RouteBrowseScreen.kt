@@ -4,6 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-fun RouteBrowseScreen(modifier: Modifier = Modifier) {
+fun RouteBrowseScreen(isWidthCompact: Boolean, modifier: Modifier = Modifier) {
 
 }

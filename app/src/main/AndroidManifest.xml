@@ -13,6 +13,24 @@
         android:theme="@style/Theme.RunningApplication"
         tools:targetApi="31">
         <activity
+            android:name=".TempRouteBrowseActivity"
+            android:exported="false"
+            android:label="@string/route_browse_toolbar_title"
+            android:theme="@style/Theme.RunningApplication">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".TempCaloriesActivity"
+            android:exported="false"
+            android:label="@string/calories_toolbar_title"
+            android:theme="@style/Theme.RunningApplication">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
