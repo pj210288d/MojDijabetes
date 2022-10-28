@@ -1,5 +1,7 @@
 package rs.etf.running.ui.elements.screens
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -12,8 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
 import rs.etf.running.ui.stateholders.RouteViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import rs.etf.running.R
@@ -26,6 +30,8 @@ fun RouteBrowseScreen(
     viewModel: RouteViewModel = viewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
+
+    val context = LocalContext.current
 
     LazyColumn {
         items(items = uiState.routes) { route ->
@@ -45,8 +51,17 @@ fun RouteBrowseScreen(
                         ) {
                             Text(text = stringResource(id = R.string.route_view_holder_button_text_description).uppercase())
                         }
+                        val routeLocation = stringResource(id = route.location)
+                            .replace(" ", "%20")
+                            .replace(",", "%2C")
                         TextButton(
-                            onClick = { /*TODO*/ },
+                            onClick = {
+                                val intent = Intent().apply {
+                                    action = Intent.ACTION_VIEW
+                                    data = Uri.parse("geo:0,0?q=${routeLocation}")
+                                }
+                                ContextCompat.startActivity(context, intent, null)
+                            },
                         ) {
                             Text(text = stringResource(id = R.string.route_view_holder_button_text_location).uppercase())
                         }
