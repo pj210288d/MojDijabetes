@@ -48,7 +48,11 @@ fun RunningApp(windowSizeClass: WindowSizeClass) {
                         selected = it.route == currentRoute,
                         selectedContentColor = MaterialTheme.colors.primary,
                         unselectedContentColor = Color.Gray,
-                        onClick = { navController.navigate(it.route) }
+                        onClick = {
+                            navController.navigate(it.route) {
+                                launchSingleTop = true
+                            }
+                        }
                     )
                 }
             }
