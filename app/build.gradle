@@ -74,4 +74,7 @@ dependencies {
 
     // https://developer.android.com/guide/topics/large-screens/support-different-screen-sizes
     implementation 'androidx.compose.material3:material3-window-size-class:1.0.0-rc01'
+
+    // https://developer.android.com/jetpack/compose/navigation
+    implementation 'androidx.navigation:navigation-compose:2.6.0-alpha04'
 }
