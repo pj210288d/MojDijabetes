@@ -4,12 +4,18 @@
     <!-- Main -->
     <string name="main_button_text_calories">Calculate calories</string>
     <string name="main_button_text_browse">Browse routes</string>
+    <string name="main_navigation_item_title_routes">Routes</string>
+    <string name="main_navigation_item_title_workouts">Workouts</string>
+    <string name="main_navigation_item_title_calories">Calories</string>
 
     <!-- Routes -->
     <string name="route_browse_toolbar_title">Walking Routes</string>
     <string name="route_view_holder_button_text_description">Description</string>
     <string name="route_view_holder_button_text_location">Location</string>
     <string name="route_details_toolbar_title">Route Details</string>
+
+    <!-- Workouts -->
+    <string name="workout_list_toolbar_title">Workouts</string>
 
     <!-- Calories -->
     <string name="calories_toolbar_title">Calories Calculator</string>

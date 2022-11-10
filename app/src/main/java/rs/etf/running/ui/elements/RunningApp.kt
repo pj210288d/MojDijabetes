@@ -8,6 +8,7 @@ import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -15,6 +16,7 @@ import androidx.core.content.ContextCompat
 import rs.etf.running.R
 import rs.etf.running.TempCaloriesActivity
 import rs.etf.running.TempRouteBrowseActivity
+import rs.etf.running.topLevelRunningDestinations
 
 @Composable
 fun RunningApp(windowSizeClass: WindowSizeClass) {
@@ -31,6 +33,25 @@ fun RunningApp(windowSizeClass: WindowSizeClass) {
                 TopAppBar(
                     title = { Text(text = stringResource(id = R.string.calories_toolbar_title)) },
                 )
+            },
+            bottomBar = {
+                BottomNavigation(backgroundColor = MaterialTheme.colors.surface) {
+                    topLevelRunningDestinations.forEach {
+                        BottomNavigationItem(
+                            icon = {
+                                Icon(
+                                    imageVector = it.navigationIcon,
+                                    contentDescription = null
+                                )
+                            },
+                            label = { Text(text = stringResource(id = it.navigationLabelResId)) },
+                            selected = false,
+                            selectedContentColor = MaterialTheme.colors.primary,
+                            unselectedContentColor = Color.Gray,
+                            onClick = { /*TODO*/ }
+                        )
+                    }
+                }
             }
         ) { padding ->
             Column(modifier = Modifier.fillMaxWidth()) {
