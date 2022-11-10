@@ -46,7 +46,7 @@ fun RunningApp(windowSizeClass: WindowSizeClass) {
                             )
                         },
                         label = { Text(text = stringResource(id = it.navigationLabelResId)) },
-                        selected = it.route == currentRoute,
+                        selected = currentRoute.startsWith(it.route),
                         selectedContentColor = MaterialTheme.colors.primary,
                         unselectedContentColor = Color.Gray,
                         onClick = {
