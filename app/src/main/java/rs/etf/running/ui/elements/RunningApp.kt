@@ -52,6 +52,11 @@ fun RunningApp(windowSizeClass: WindowSizeClass) {
                         onClick = {
                             navController.navigate(it.route) {
                                 launchSingleTop = true
+                                // https://developer.android.com/guide/navigation/multi-back-stacks#navoptions
+                                restoreState = true
+                                popUpTo(RouteBrowse.route) {
+                                    saveState = true
+                                }
                             }
                         }
                     )
