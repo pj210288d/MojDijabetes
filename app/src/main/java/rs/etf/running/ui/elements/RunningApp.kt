@@ -15,6 +15,7 @@ import androidx.navigation.compose.rememberNavController
 import rs.etf.running.*
 import rs.etf.running.ui.elements.screens.CaloriesScreen
 import rs.etf.running.ui.elements.screens.RouteBrowseScreen
+import rs.etf.running.ui.elements.screens.RouteDetailsScreen
 import rs.etf.running.ui.elements.screens.WorkoutListScreen
 
 @Composable
@@ -63,14 +64,29 @@ fun RunningApp(windowSizeClass: WindowSizeClass) {
             startDestination = RouteBrowse.route,
             modifier = Modifier.padding(padding),
         ) {
-            composable(RouteBrowse.route) {
-                RouteBrowseScreen(isWidthCompact)
+            composable(route = RouteBrowse.route) {
+                RouteBrowseScreen(
+                    onClickRoute = { routeIndex ->
+                        navController.navigate("${RouteDetails.route}/${routeIndex}")
+                    },
+                    isWidthCompact = isWidthCompact,
+                )
             }
-            composable(WorkoutList.route) {
-                WorkoutListScreen(isWidthCompact)
+            composable(
+                route = RouteDetails.routeWithArguments,
+                arguments = RouteDetails.routeArguments,
+            ) {
+                val routeIndex = it.arguments?.getInt(RouteDetails.routeArguments.first().name) ?: 0
+                RouteDetailsScreen(
+                    routeIndex = routeIndex,
+                    isWidthCompact = isWidthCompact,
+                )
             }
-            composable(Calories.route) {
-                CaloriesScreen(isWidthCompact)
+            composable(route = WorkoutList.route) {
+                WorkoutListScreen(isWidthCompact = isWidthCompact)
+            }
+            composable(route = Calories.route) {
+                CaloriesScreen(isWidthCompact = isWidthCompact)
             }
         }
     }

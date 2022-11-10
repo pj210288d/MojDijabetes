@@ -5,6 +5,8 @@ import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.DirectionsRun
 import androidx.compose.material.icons.filled.Terrain
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 
 interface RunningDestination {
     val topAppBarLabelResId: Int
@@ -46,6 +48,8 @@ val topLevelRunningDestinations = listOf(
 object RouteDetails : RunningDestination {
     override val topAppBarLabelResId = R.string.route_details_toolbar_title
     override val route = "routes/details"
+    val routeWithArguments = "${route}/{index}"
+    val routeArguments = listOf(navArgument("index") { type = NavType.IntType })
 }
 
 val runningDestinations = topLevelRunningDestinations + listOf(

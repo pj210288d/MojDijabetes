@@ -1,6 +1,5 @@
 package rs.etf.running.ui.elements.screens
 
-import android.content.ComponentName
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.layout.Column
@@ -22,12 +21,11 @@ import androidx.core.content.ContextCompat
 import rs.etf.running.ui.stateholders.RouteViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import rs.etf.running.R
-import rs.etf.running.ROUTE_INDEX_KEY
-import rs.etf.running.TempRouteDetailsActivity
 import rs.etf.running.ui.elements.composables.RouteDescriptionHeader
 
 @Composable
 fun RouteBrowseScreen(
+    onClickRoute: (Int) -> Unit,
     isWidthCompact: Boolean,
     modifier: Modifier = Modifier,
     viewModel: RouteViewModel = viewModel()
@@ -50,16 +48,7 @@ fun RouteBrowseScreen(
                         ),
                     ) {
                         TextButton(
-                            onClick = {
-                                val intent = Intent().apply {
-                                    putExtra(ROUTE_INDEX_KEY, routeIndex)
-                                    component = ComponentName(
-                                        context,
-                                        TempRouteDetailsActivity::class.java
-                                    )
-                                }
-                                ContextCompat.startActivity(context, intent, null)
-                            },
+                            onClick = { onClickRoute(routeIndex) },
                         ) {
                             Text(text = stringResource(id = R.string.route_view_holder_button_text_description).uppercase())
                         }

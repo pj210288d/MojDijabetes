@@ -33,7 +33,7 @@ class TempRouteBrowseActivity : ComponentActivity() {
                             )
                         }
                     ) { padding ->
-                        RouteBrowseScreen(isWidthCompact, modifier = Modifier.padding(padding))
+                        RouteBrowseScreen({}, isWidthCompact, modifier = Modifier.padding(padding))
                     }
                 }
             }
