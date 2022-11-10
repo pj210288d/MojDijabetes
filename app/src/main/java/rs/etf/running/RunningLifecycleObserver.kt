@@ -6,7 +6,7 @@ import androidx.lifecycle.LifecycleOwner
 
 // https://developer.android.com/topic/libraries/architecture/lifecycle
 // https://developer.android.com/reference/androidx/lifecycle/DefaultLifecycleObserver
-class MainLifecycleObserver : DefaultLifecycleObserver {
+class RunningLifecycleObserver : DefaultLifecycleObserver {
 
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
