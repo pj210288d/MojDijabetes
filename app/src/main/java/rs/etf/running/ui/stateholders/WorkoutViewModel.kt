@@ -5,6 +5,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
 import kotlinx.parcelize.Parcelize
 import rs.etf.running.data.room.Workout
@@ -66,6 +68,20 @@ class WorkoutViewModel @Inject constructor(
         }
     }
 
-    val allWorkouts = workoutRepository.allWorkouts
+    private val _uiStateList = savedStateHandle.getStateFlow("uiStateList", WorkoutListUiState())
+
+    fun invertIsSorted() {
+        savedStateHandle["uiStateList"] = _uiStateList.value.copy(
+            isSorted = !_uiStateList.value.isSorted
+        )
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val allWorkouts = _uiStateList.flatMapLatest {
+        if (it.isSorted)
+            workoutRepository.allWorkoutsSorted
+        else
+            workoutRepository.allWorkouts
+    }
 
 }

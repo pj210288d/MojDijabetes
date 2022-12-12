@@ -16,4 +16,7 @@ interface WorkoutDao {
 
     @Query("SELECT * FROM Workout")
     fun getAllAsFlow(): Flow<List<Workout>>
+
+    @Query("SELECT * FROM Workout ORDER BY distance DESC")
+    fun getAllSortedAsFlow(): Flow<List<Workout>>
 }

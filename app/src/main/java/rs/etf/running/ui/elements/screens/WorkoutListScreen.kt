@@ -6,10 +6,12 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Sort
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -29,6 +31,15 @@ fun WorkoutListScreen(
         topBar = {
             TopAppBar(
                 title = { Text(text = stringResource(id = WorkoutList.topAppBarLabelResId)) },
+                actions = {
+                    IconButton(onClick = { viewModel.invertIsSorted() }) {
+                        Icon(
+                            imageVector = Icons.Default.Sort,
+                            tint = Color.White,
+                            contentDescription = null,
+                        )
+                    }
+                }
             )
         },
         floatingActionButton = {
