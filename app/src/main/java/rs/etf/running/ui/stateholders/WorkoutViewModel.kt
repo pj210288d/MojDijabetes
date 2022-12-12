@@ -66,4 +66,6 @@ class WorkoutViewModel @Inject constructor(
         }
     }
 
+    val allWorkouts = workoutRepository.allWorkouts
+
 }
