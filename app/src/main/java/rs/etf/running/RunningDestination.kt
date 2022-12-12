@@ -47,11 +47,11 @@ val topLevelRunningDestinations = listOf(
 
 object RouteDetails : RunningDestination {
     override val topAppBarLabelResId = R.string.route_details_toolbar_title
-    override val route = "routes/details"
-    val routeWithArguments = "${route}/{index}"
+    override val route = "routes/details/{index}"
     val routeArguments = listOf(navArgument("index") { type = NavType.IntType })
 }
 
-val runningDestinations = topLevelRunningDestinations + listOf(
-    RouteDetails,
-)
+object WorkoutCreate : RunningDestination {
+    override val topAppBarLabelResId = R.string.workout_create_toolbar_title
+    override val route = "workouts/create"
+}

@@ -56,7 +56,7 @@ fun RunningApp(windowSizeClass: WindowSizeClass) {
                     )
                 }
             }
-        }
+        },
     ) { padding ->
         NavHost(
             navController = navController,
@@ -66,12 +66,16 @@ fun RunningApp(windowSizeClass: WindowSizeClass) {
             composable(route = RouteBrowse.route) {
                 RouteBrowseScreen(
                     onClickRoute = { routeIndex ->
-                        navController.navigate("${RouteDetails.route}/${routeIndex}")
+                        navController.navigate(
+                            RouteDetails.route.replace(
+                                "{index}", routeIndex.toString()
+                            )
+                        )
                     },
                 )
             }
             composable(
-                route = RouteDetails.routeWithArguments,
+                route = RouteDetails.route,
                 arguments = RouteDetails.routeArguments,
             ) {
                 val routeIndex = it.arguments?.getInt(RouteDetails.routeArguments.first().name) ?: 0
