@@ -25,14 +25,8 @@ fun RunningApp(windowSizeClass: WindowSizeClass) {
     val navController = rememberNavController()
     val currentBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = currentBackStackEntry?.destination?.route ?: RouteBrowse.route
-    val currentDestination = runningDestinations.find { it.route == currentRoute } ?: RouteBrowse
 
     Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(text = stringResource(id = currentDestination.topAppBarLabelResId)) },
-            )
-        },
         bottomBar = {
             BottomNavigation(
                 backgroundColor = MaterialTheme.colors.surface,
@@ -58,7 +52,7 @@ fun RunningApp(windowSizeClass: WindowSizeClass) {
                                     saveState = true
                                 }
                             }
-                        }
+                        },
                     )
                 }
             }
@@ -74,7 +68,6 @@ fun RunningApp(windowSizeClass: WindowSizeClass) {
                     onClickRoute = { routeIndex ->
                         navController.navigate("${RouteDetails.route}/${routeIndex}")
                     },
-                    isWidthCompact = isWidthCompact,
                 )
             }
             composable(
@@ -84,11 +77,11 @@ fun RunningApp(windowSizeClass: WindowSizeClass) {
                 val routeIndex = it.arguments?.getInt(RouteDetails.routeArguments.first().name) ?: 0
                 RouteDetailsScreen(
                     routeIndex = routeIndex,
-                    isWidthCompact = isWidthCompact,
+                    onNavigateUp = { navController.navigateUp() }
                 )
             }
             composable(route = WorkoutList.route) {
-                WorkoutListScreen(isWidthCompact = isWidthCompact)
+                WorkoutListScreen()
             }
             composable(route = Calories.route) {
                 CaloriesScreen(isWidthCompact = isWidthCompact)

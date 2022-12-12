@@ -12,9 +12,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
+import rs.etf.running.Calories
 import rs.etf.running.R
 import rs.etf.running.ui.elements.composables.RadioButtonWithText
 import rs.etf.running.ui.elements.composables.Spinner
@@ -42,37 +41,19 @@ fun CaloriesScreen(
 ) {
     val uiState by caloriesViewModel.uiState.collectAsState()
 
-    if (isWidthCompact) {
-        Column(modifier = modifier.verticalScroll(rememberScrollState())) {
-            CaloriesInputs(
-                weight = uiState.weight,
-                onWeightChange = caloriesViewModel::setWeight,
-                height = uiState.height,
-                onHeightChange = caloriesViewModel::setHeight,
-                age = uiState.age,
-                onAgeChange = caloriesViewModel::setAge,
-                isMale = uiState.isMale,
-                onIsMaleClick = caloriesViewModel::setIsMale,
-                isFemale = uiState.isFemale,
-                onIsFemaleClick = caloriesViewModel::setIsFemale,
-                duration = uiState.duration,
-                onDurationChange = caloriesViewModel::setDuration,
-                metIndex = uiState.metIndex,
-                onMetIndexChange = caloriesViewModel::setMetIndex,
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = stringResource(id = Calories.topAppBarLabelResId)) },
             )
-            CaloriesCalculation(
-                caloriesBurned = uiState.caloriesBurned,
-                caloriesNeeded = uiState.caloriesNeeded,
-                calculateCalories = caloriesViewModel::calculateCalories,
-                modifier = Modifier.fillMaxWidth()
-            )
-        }
-    } else {
-        Row {
+        },
+        modifier = modifier,
+    ) { padding ->
+        if (isWidthCompact) {
             Column(
-                modifier = modifier
-                    .weight(2f)
-                    .verticalScroll(rememberScrollState())
+                modifier = Modifier
+                    .padding(padding)
+                    .verticalScroll(rememberScrollState()),
             ) {
                 CaloriesInputs(
                     weight = uiState.weight,
@@ -90,18 +71,49 @@ fun CaloriesScreen(
                     metIndex = uiState.metIndex,
                     onMetIndexChange = caloriesViewModel::setMetIndex,
                 )
-            }
-            Column(
-                modifier = modifier
-                    .weight(1f)
-                    .verticalScroll(rememberScrollState())
-            ) {
                 CaloriesCalculation(
                     caloriesBurned = uiState.caloriesBurned,
                     caloriesNeeded = uiState.caloriesNeeded,
                     calculateCalories = caloriesViewModel::calculateCalories,
                     modifier = Modifier.fillMaxWidth()
                 )
+            }
+        } else {
+            Row {
+                Column(
+                    modifier = modifier
+                        .weight(2f)
+                        .verticalScroll(rememberScrollState())
+                ) {
+                    CaloriesInputs(
+                        weight = uiState.weight,
+                        onWeightChange = caloriesViewModel::setWeight,
+                        height = uiState.height,
+                        onHeightChange = caloriesViewModel::setHeight,
+                        age = uiState.age,
+                        onAgeChange = caloriesViewModel::setAge,
+                        isMale = uiState.isMale,
+                        onIsMaleClick = caloriesViewModel::setIsMale,
+                        isFemale = uiState.isFemale,
+                        onIsFemaleClick = caloriesViewModel::setIsFemale,
+                        duration = uiState.duration,
+                        onDurationChange = caloriesViewModel::setDuration,
+                        metIndex = uiState.metIndex,
+                        onMetIndexChange = caloriesViewModel::setMetIndex,
+                    )
+                }
+                Column(
+                    modifier = modifier
+                        .weight(1f)
+                        .verticalScroll(rememberScrollState())
+                ) {
+                    CaloriesCalculation(
+                        caloriesBurned = uiState.caloriesBurned,
+                        caloriesNeeded = uiState.caloriesNeeded,
+                        calculateCalories = caloriesViewModel::calculateCalories,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
             }
         }
     }
