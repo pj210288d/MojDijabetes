@@ -13,10 +13,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import rs.etf.running.*
-import rs.etf.running.ui.elements.screens.CaloriesScreen
-import rs.etf.running.ui.elements.screens.RouteBrowseScreen
-import rs.etf.running.ui.elements.screens.RouteDetailsScreen
-import rs.etf.running.ui.elements.screens.WorkoutListScreen
+import rs.etf.running.ui.elements.screens.*
 
 @Composable
 fun RunningApp(windowSizeClass: WindowSizeClass) {
@@ -85,7 +82,15 @@ fun RunningApp(windowSizeClass: WindowSizeClass) {
                 )
             }
             composable(route = WorkoutList.route) {
-                WorkoutListScreen()
+                WorkoutListScreen(
+                    onNavigateToWorkoutCreate = { navController.navigate(WorkoutCreate.route) },
+                )
+            }
+            composable(route = WorkoutCreate.route) {
+                WorkoutCreateScreen(
+                    onNavigateUp = { navController.navigateUp() },
+                    onWorkoutCreated = { navController.navigateUp() },
+                )
             }
             composable(route = Calories.route) {
                 CaloriesScreen(isWidthCompact = isWidthCompact)
