@@ -3,9 +3,11 @@ package rs.etf.running.ui.stateholders
 import android.os.Parcelable
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.parcelize.Parcelize
+import javax.inject.Inject
 
 // https://developer.android.com/kotlin/parcelize
 @Parcelize
@@ -27,7 +29,9 @@ const val UI_STATE_KEY = "uiState"
 // $ adb -t <transport-id> shell am kill <package-name>
 
 // https://developer.android.com/topic/libraries/architecture/viewmodel/viewmodel-savedstate
-class CaloriesViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
+@HiltViewModel
+class CaloriesViewModel @Inject constructor(private val savedStateHandle: SavedStateHandle) :
+    ViewModel() {
     private val _uiState1 = MutableStateFlow(CaloriesUiState())
 
     // https://developer.android.com/topic/libraries/architecture/viewmodel/viewmodel-savedstate#savedstate-stateflow

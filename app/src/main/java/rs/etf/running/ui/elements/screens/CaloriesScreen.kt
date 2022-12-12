@@ -28,17 +28,17 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
+import androidx.hilt.navigation.compose.hiltViewModel
 import rs.etf.running.R
 import rs.etf.running.ui.elements.composables.RadioButtonWithText
 import rs.etf.running.ui.elements.composables.Spinner
 import rs.etf.running.ui.stateholders.CaloriesViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun CaloriesScreen(
     isWidthCompact: Boolean,
     modifier: Modifier = Modifier,
-    caloriesViewModel: CaloriesViewModel = viewModel(),
+    caloriesViewModel: CaloriesViewModel = hiltViewModel(),
 ) {
     val uiState by caloriesViewModel.uiState.collectAsState()
 

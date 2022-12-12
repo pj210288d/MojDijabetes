@@ -18,8 +18,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
+import androidx.hilt.navigation.compose.hiltViewModel
 import rs.etf.running.ui.stateholders.RouteViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import rs.etf.running.R
 import rs.etf.running.ui.elements.composables.RouteDescriptionHeader
 
@@ -28,7 +28,7 @@ fun RouteBrowseScreen(
     onClickRoute: (Int) -> Unit,
     isWidthCompact: Boolean,
     modifier: Modifier = Modifier,
-    viewModel: RouteViewModel = viewModel()
+    viewModel: RouteViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
 

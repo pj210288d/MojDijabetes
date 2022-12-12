@@ -12,16 +12,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import rs.etf.running.ui.elements.composables.RouteDescriptionHeader
 import rs.etf.running.ui.stateholders.RouteViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun RouteDetailsScreen(
     routeIndex: Int,
     isWidthCompact: Boolean,
     modifier: Modifier = Modifier,
-    viewModel: RouteViewModel = viewModel()
+    viewModel: RouteViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
