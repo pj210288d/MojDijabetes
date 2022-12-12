@@ -16,6 +16,19 @@
 
     <!-- Workouts -->
     <string name="workout_list_toolbar_title">Treninzi</string>
+    <string name="workout_list_options_menu_title_sort">Sortiraj</string>
+    <string name="workout_list_fab_text_start">Započni</string>
+    <string name="workout_list_fab_text_create">Napravi</string>
+    <string name="workout_create_toolbar_title">Novi trening</string>
+    <string name="workout_create_edit_text_hint_date">Datum</string>
+    <string name="workout_create_edit_text_hint_label">Naziv</string>
+    <string name="workout_create_edit_text_hint_distance">Distanca</string>
+    <string name="workout_create_edit_text_hint_duration">Trajanje</string>
+    <string name="workout_create_edit_text_suffix_distance">km</string>
+    <string name="workout_create_edit_text_suffix_duration">min</string>
+    <string name="workout_create_button_text_create">Napravi</string>
+    <string name="workout_create_edit_text_error_empty">Obavezno polje</string>
+    <string name="workout_create_edit_text_error_format">Pogrešan format</string>
 
     <!-- Calories -->
     <string name="calories_toolbar_title">Kalkulator kalorija</string>

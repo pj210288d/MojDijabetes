@@ -16,6 +16,19 @@
 
     <!-- Workouts -->
     <string name="workout_list_toolbar_title">Workouts</string>
+    <string name="workout_list_options_menu_title_sort">Sort</string>
+    <string name="workout_list_fab_text_start">Start</string>
+    <string name="workout_list_fab_text_create">Create</string>
+    <string name="workout_create_toolbar_title">New Workout</string>
+    <string name="workout_create_edit_text_hint_date">Date</string>
+    <string name="workout_create_edit_text_hint_label">Label</string>
+    <string name="workout_create_edit_text_hint_distance">Distance</string>
+    <string name="workout_create_edit_text_hint_duration">Duration</string>
+    <string name="workout_create_edit_text_suffix_distance">km</string>
+    <string name="workout_create_edit_text_suffix_duration">min</string>
+    <string name="workout_create_button_text_create">Create</string>
+    <string name="workout_create_edit_text_error_empty">Field is required</string>
+    <string name="workout_create_edit_text_error_format">Wrong format</string>
 
     <!-- Calories -->
     <string name="calories_toolbar_title">Calories Calculator</string>
