@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     // https://developer.android.com/kotlin/parcelize
     id 'kotlin-parcelize'
+    // https://developer.android.com/training/data-storage/room
+    id 'kotlin-kapt'
 }
 
 android {
@@ -77,4 +79,10 @@ dependencies {
 
     // https://developer.android.com/jetpack/compose/navigation
     implementation 'androidx.navigation:navigation-compose:2.6.0-alpha04'
+
+    // https://developer.android.com/training/data-storage/room
+    implementation 'androidx.room:room-ktx:2.4.3'
+    implementation 'androidx.room:room-runtime:2.4.3'
+    annotationProcessor 'androidx.room:room-compiler:2.4.3'
+    kapt 'androidx.room:room-compiler:2.4.3'
 }
