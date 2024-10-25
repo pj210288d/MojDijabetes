@@ -12,7 +12,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,6 +33,7 @@ import rs.etf.running.ui.elements.composables.RadioButtonWithText
 import rs.etf.running.ui.elements.composables.Spinner
 import rs.etf.running.ui.stateholders.CaloriesViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CaloriesScreen(
     isWidthCompact: Boolean,

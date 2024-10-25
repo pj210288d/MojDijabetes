@@ -1,6 +1,7 @@
 package rs.etf.running
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.DirectionsRun
 import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.DirectionsRun
 import androidx.compose.material.icons.filled.Terrain
@@ -33,7 +34,7 @@ object WorkoutList : TopLevelRunningDestination {
 }
 
 object Calories : TopLevelRunningDestination {
-    override val navigationIcon = Icons.Default.DirectionsRun
+    override val navigationIcon = Icons.AutoMirrored.Filled.DirectionsRun
     override val navigationLabelResId = R.string.main_navigation_item_title_calories
     override val topAppBarLabelResId = R.string.calories_toolbar_title
     override val route = "calories"

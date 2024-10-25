@@ -5,10 +5,10 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.Text
-import androidx.compose.material.Icon
-import androidx.compose.material.DropdownMenu
-import androidx.compose.material.DropdownMenuItem
+import androidx.compose.material3.Text
+import androidx.compose.material3.Icon
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -49,13 +49,14 @@ fun Spinner(
         ) {
             options.forEach {
                 DropdownMenuItem(
+                    text = {
+                        Text(text = it)
+                    },
                     onClick = {
                         onSelect(it)
                         isExpanded = false
                     },
-                ) {
-                    Text(text = it)
-                }
+                )
             }
         }
     }

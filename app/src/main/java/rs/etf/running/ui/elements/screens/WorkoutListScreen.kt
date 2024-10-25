@@ -3,8 +3,9 @@ package rs.etf.running.ui.elements.screens
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Sort
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Sort
 import androidx.compose.runtime.Composable
@@ -19,6 +20,7 @@ import rs.etf.running.WorkoutList
 import rs.etf.running.ui.stateholders.WorkoutViewModel
 import rs.etf.running.util.DateTimeUtil
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WorkoutListScreen(
     modifier: Modifier = Modifier,
@@ -34,7 +36,7 @@ fun WorkoutListScreen(
                 actions = {
                     IconButton(onClick = { viewModel.invertIsSorted() }) {
                         Icon(
-                            imageVector = Icons.Default.Sort,
+                            imageVector = Icons.AutoMirrored.Filled.Sort,
                             tint = Color.White,
                             contentDescription = null,
                         )
@@ -51,20 +53,23 @@ fun WorkoutListScreen(
     ) { padding ->
         LazyColumn(modifier = Modifier.padding(padding)) {
             items(workouts) {
-                Card(modifier = Modifier.fillMaxWidth(), elevation = 8.dp) {
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+                ) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Text(
                             text = DateTimeUtil.formatDate(it.date),
-                            style = MaterialTheme.typography.body1,
+                            style = MaterialTheme.typography.bodyLarge,
                         )
                         Text(
                             text = it.label,
-                            style = MaterialTheme.typography.h6,
+                            style = MaterialTheme.typography.headlineSmall,
                         )
                         Row() {
                             Text(
                                 text = String.format("%.2f km", it.distance),
-                                style = MaterialTheme.typography.body1,
+                                style = MaterialTheme.typography.bodyLarge,
                             )
                             Spacer(modifier = Modifier.size(16.dp))
                             Text(
@@ -72,7 +77,7 @@ fun WorkoutListScreen(
                                     "%s min/km",
                                     DateTimeUtil.realMinutesToString(it.duration / it.distance)
                                 ),
-                                style = MaterialTheme.typography.body1,
+                                style = MaterialTheme.typography.bodyLarge,
                             )
                             Spacer(modifier = Modifier.size(16.dp))
                             Text(
@@ -80,7 +85,7 @@ fun WorkoutListScreen(
                                     "%s min",
                                     DateTimeUtil.realMinutesToString(it.duration)
                                 ),
-                                style = MaterialTheme.typography.body1,
+                                style = MaterialTheme.typography.bodyLarge,
                             )
                         }
                     }

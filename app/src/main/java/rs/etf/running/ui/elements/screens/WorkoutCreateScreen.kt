@@ -7,8 +7,9 @@ import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.EditCalendar
 import androidx.compose.runtime.Composable
@@ -31,6 +32,7 @@ import rs.etf.running.R
 import rs.etf.running.ui.stateholders.WorkoutViewModel
 import rs.etf.running.util.DateTimeUtil
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WorkoutCreateScreen(
     onNavigateUp: () -> Unit,
@@ -67,7 +69,10 @@ fun WorkoutCreateScreen(
                 title = { Text(text = stringResource(id = WorkoutCreate.topAppBarLabelResId)) },
                 navigationIcon = {
                     IconButton(onClick = { onNavigateUp() }) {
-                        Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = null
+                        )
                     }
                 },
             )

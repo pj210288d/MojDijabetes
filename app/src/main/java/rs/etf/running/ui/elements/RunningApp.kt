@@ -1,9 +1,8 @@
 package rs.etf.running.ui.elements
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
-import androidx.compose.material3.windowsizeclass.WindowSizeClass
-import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.*
+import androidx.compose.material3.windowsizeclass.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -25,11 +24,9 @@ fun RunningApp(windowSizeClass: WindowSizeClass) {
 
     Scaffold(
         bottomBar = {
-            BottomNavigation(
-                backgroundColor = MaterialTheme.colors.surface,
-            ) {
+            NavigationBar {
                 topLevelRunningDestinations.forEach {
-                    BottomNavigationItem(
+                    NavigationBarItem(
                         icon = {
                             Icon(
                                 imageVector = it.navigationIcon,
@@ -38,8 +35,6 @@ fun RunningApp(windowSizeClass: WindowSizeClass) {
                         },
                         label = { Text(text = stringResource(id = it.navigationLabelResId)) },
                         selected = currentRoute.startsWith(it.route),
-                        selectedContentColor = MaterialTheme.colors.primary,
-                        unselectedContentColor = Color.Gray,
                         onClick = {
                             navController.navigate(it.route) {
                                 launchSingleTop = true

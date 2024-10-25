@@ -4,8 +4,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -18,6 +19,7 @@ import rs.etf.running.RouteDetails
 import rs.etf.running.ui.elements.composables.RouteDescriptionHeader
 import rs.etf.running.ui.stateholders.RouteViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RouteDetailsScreen(
     routeIndex: Int,
@@ -35,7 +37,10 @@ fun RouteDetailsScreen(
                 title = { Text(text = stringResource(id = RouteDetails.topAppBarLabelResId)) },
                 navigationIcon = {
                     IconButton(onClick = { onNavigateUp() }) {
-                        Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = null
+                        )
                     }
                 },
             )
@@ -50,7 +55,7 @@ fun RouteDetailsScreen(
             RouteDescriptionHeader(route = route)
             Text(
                 text = stringResource(id = route.description),
-                style = MaterialTheme.typography.body2,
+                style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.padding(
                     start = 16.dp,
                     top = 8.dp,
