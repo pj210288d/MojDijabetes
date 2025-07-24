@@ -1,0 +1,94 @@
+//package rs.etf.mojdijabetes.ui.elements
+//
+//import androidx.compose.foundation.layout.*
+//import androidx.compose.material3.*
+//import androidx.compose.material3.windowsizeclass.*
+//import androidx.compose.runtime.*
+//import androidx.compose.ui.Modifier
+//import androidx.compose.ui.res.stringResource
+//import androidx.navigation.compose.NavHost
+//import androidx.navigation.compose.composable
+//import androidx.navigation.compose.currentBackStackEntryAsState
+//import androidx.navigation.compose.rememberNavController
+//import rs.etf.mojdijabetes.*
+//import rs.etf.mojdijabetes.ui.elements.screens.*
+//
+//@Composable
+//fun RunningApp(windowSizeClass: WindowSizeClass) {
+//    val isWidthCompact = windowSizeClass.widthSizeClass == WindowWidthSizeClass.Compact
+//
+//    val navController = rememberNavController()
+//    val currentBackStackEntry by navController.currentBackStackEntryAsState()
+//    val currentRoute = currentBackStackEntry?.destination?.route ?: RouteBrowse.route
+//
+//    Scaffold(
+//        bottomBar = {
+//            NavigationBar {
+//                topLevelRunningDestinations.forEach {
+//                    NavigationBarItem(
+//                        icon = {
+//                            Icon(
+//                                imageVector = it.navigationIcon,
+//                                contentDescription = null
+//                            )
+//                        },
+//                        label = { Text(text = stringResource(id = it.navigationLabelResId)) },
+//                        selected = currentRoute.startsWith(it.route),
+//                        onClick = {
+//                            navController.navigate(it.route) {
+//                                launchSingleTop = true
+//                                // https://developer.android.com/guide/navigation/multi-back-stacks#navoptions
+//                                restoreState = true
+//                                popUpTo(RouteBrowse.route) {
+//                                    saveState = true
+//                                }
+//                            }
+//                        },
+//                    )
+//                }
+//            }
+//        },
+//    ) { padding ->
+//        NavHost(
+//            navController = navController,
+//            startDestination = RouteBrowse.route,
+//            modifier = Modifier.padding(padding),
+//        ) {
+//            composable(route = RouteBrowse.route) {
+//                RouteBrowseScreen(
+//                    onClickRoute = { routeIndex ->
+//                        navController.navigate(
+//                            RouteDetails.route.replace(
+//                                "{index}", routeIndex.toString()
+//                            )
+//                        )
+//                    },
+//                )
+//            }
+//            composable(
+//                route = RouteDetails.route,
+//                arguments = RouteDetails.routeArguments,
+//            ) {
+//                val routeIndex = it.arguments?.getInt(RouteDetails.routeArguments.first().name) ?: 0
+//                RouteDetailsScreen(
+//                    routeIndex = routeIndex,
+//                    onNavigateUp = { navController.navigateUp() }
+//                )
+//            }
+//            composable(route = WorkoutList.route) {
+//                WorkoutListScreen(
+//                    onNavigateToWorkoutCreate = { navController.navigate(WorkoutCreate.route) },
+//                )
+//            }
+//            composable(route = WorkoutCreate.route) {
+//                WorkoutCreateScreen(
+//                    onNavigateUp = { navController.navigateUp() },
+//                    onWorkoutCreated = { navController.navigateUp() },
+//                )
+//            }
+//            composable(route = Calories.route) {
+//                CaloriesScreen(isWidthCompact = isWidthCompact)
+//            }
+//        }
+//    }
+//}

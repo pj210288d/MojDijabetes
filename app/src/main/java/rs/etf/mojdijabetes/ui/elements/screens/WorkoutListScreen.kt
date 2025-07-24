@@ -1,0 +1,95 @@
+//package rs.etf.mojdijabetes.ui.elements.screens
+//
+//import androidx.compose.foundation.layout.*
+//import androidx.compose.foundation.lazy.LazyColumn
+//import androidx.compose.foundation.lazy.items
+//import androidx.compose.material3.*
+//import androidx.compose.material.icons.Icons
+//import androidx.compose.material.icons.automirrored.filled.Sort
+//import androidx.compose.material.icons.filled.Add
+//import androidx.compose.runtime.Composable
+//import androidx.compose.runtime.collectAsState
+//import androidx.compose.runtime.getValue
+//import androidx.compose.ui.Modifier
+//import androidx.compose.ui.graphics.Color
+//import androidx.compose.ui.res.stringResource
+//import androidx.compose.ui.unit.dp
+//import androidx.hilt.navigation.compose.hiltViewModel
+//import rs.etf.mojdijabetes.WorkoutList
+//import rs.etf.mojdijabetes.ui.stateholders.WorkoutViewModel
+//import rs.etf.mojdijabetes.util.DateTimeUtil
+//
+//@OptIn(ExperimentalMaterial3Api::class)
+//@Composable
+//fun WorkoutListScreen(
+//    modifier: Modifier = Modifier,
+//    onNavigateToWorkoutCreate: () -> Unit,
+//    viewModel: WorkoutViewModel = hiltViewModel(),
+//) {
+//    val workouts by viewModel.allWorkouts.collectAsState(initial = listOf())
+//
+//    Scaffold(
+//        topBar = {
+//            TopAppBar(
+//                title = { Text(text = stringResource(id = WorkoutList.topAppBarLabelResId)) },
+//                actions = {
+//                    IconButton(onClick = { viewModel.invertIsSorted() }) {
+//                        Icon(
+//                            imageVector = Icons.AutoMirrored.Filled.Sort,
+//                            tint = Color.White,
+//                            contentDescription = null,
+//                        )
+//                    }
+//                }
+//            )
+//        },
+//        floatingActionButton = {
+//            FloatingActionButton(onClick = { onNavigateToWorkoutCreate() }) {
+//                Icon(imageVector = Icons.Default.Add, contentDescription = null)
+//            }
+//        },
+//        modifier = modifier,
+//    ) { padding ->
+//        LazyColumn(modifier = Modifier.padding(padding)) {
+//            items(workouts) {
+//                Card(
+//                    modifier = Modifier.fillMaxWidth(),
+//                    elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+//                ) {
+//                    Column(modifier = Modifier.padding(16.dp)) {
+//                        Text(
+//                            text = DateTimeUtil.formatDate(it.date),
+//                            style = MaterialTheme.typography.bodyLarge,
+//                        )
+//                        Text(
+//                            text = it.label,
+//                            style = MaterialTheme.typography.headlineSmall,
+//                        )
+//                        Row() {
+//                            Text(
+//                                text = String.format("%.2f km", it.distance),
+//                                style = MaterialTheme.typography.bodyLarge,
+//                            )
+//                            Spacer(modifier = Modifier.size(16.dp))
+//                            Text(
+//                                text = String.format(
+//                                    "%s min/km",
+//                                    DateTimeUtil.realMinutesToString(it.duration / it.distance)
+//                                ),
+//                                style = MaterialTheme.typography.bodyLarge,
+//                            )
+//                            Spacer(modifier = Modifier.size(16.dp))
+//                            Text(
+//                                text = String.format(
+//                                    "%s min",
+//                                    DateTimeUtil.realMinutesToString(it.duration)
+//                                ),
+//                                style = MaterialTheme.typography.bodyLarge,
+//                            )
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}

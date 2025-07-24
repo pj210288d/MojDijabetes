@@ -1,66 +1,66 @@
 <resources>
-    <string name="app_name">Trčanje</string>
+<!--    <string name="app_name">Trčanje</string>-->
 
-    <!-- Main -->
-    <string name="main_button_text_calories">Izračunaj kalorije</string>
-    <string name="main_button_text_browse">Pretraži rute</string>
-    <string name="main_navigation_item_title_routes">Rute</string>
-    <string name="main_navigation_item_title_workouts">Treninzi</string>
-    <string name="main_navigation_item_title_calories">Kalorije</string>
+<!--    &lt;!&ndash; Main &ndash;&gt;-->
+<!--    <string name="main_button_text_calories">Izračunaj kalorije</string>-->
+<!--    <string name="main_button_text_browse">Pretraži rute</string>-->
+<!--    <string name="main_navigation_item_title_routes">Rute</string>-->
+<!--    <string name="main_navigation_item_title_workouts">Treninzi</string>-->
+<!--    <string name="main_navigation_item_title_calories">Kalorije</string>-->
 
-    <!-- Routes -->
-    <string name="route_browse_toolbar_title">Rute za šetanje</string>
-    <string name="route_view_holder_button_text_description">Opis</string>
-    <string name="route_view_holder_button_text_location">Lokacija</string>
-    <string name="route_details_toolbar_title">Detalji rute</string>
+<!--    &lt;!&ndash; Routes &ndash;&gt;-->
+<!--    <string name="route_browse_toolbar_title">Rute za šetanje</string>-->
+<!--    <string name="route_view_holder_button_text_description">Opis</string>-->
+<!--    <string name="route_view_holder_button_text_location">Lokacija</string>-->
+<!--    <string name="route_details_toolbar_title">Detalji rute</string>-->
 
-    <!-- Workouts -->
-    <string name="workout_list_toolbar_title">Treninzi</string>
-    <string name="workout_list_options_menu_title_sort">Sortiraj</string>
-    <string name="workout_list_fab_text_start">Započni</string>
-    <string name="workout_list_fab_text_create">Napravi</string>
-    <string name="workout_create_toolbar_title">Novi trening</string>
-    <string name="workout_create_edit_text_hint_date">Datum</string>
-    <string name="workout_create_edit_text_hint_label">Naziv</string>
-    <string name="workout_create_edit_text_hint_distance">Distanca</string>
-    <string name="workout_create_edit_text_hint_duration">Trajanje</string>
-    <string name="workout_create_edit_text_suffix_distance">km</string>
-    <string name="workout_create_edit_text_suffix_duration">min</string>
-    <string name="workout_create_button_text_create">Napravi</string>
-    <string name="workout_create_edit_text_error_empty">Obavezno polje</string>
-    <string name="workout_create_edit_text_error_format">Pogrešan format</string>
+<!--    &lt;!&ndash; Workouts &ndash;&gt;-->
+<!--    <string name="workout_list_toolbar_title">Treninzi</string>-->
+<!--    <string name="workout_list_options_menu_title_sort">Sortiraj</string>-->
+<!--    <string name="workout_list_fab_text_start">Započni</string>-->
+<!--    <string name="workout_list_fab_text_create">Napravi</string>-->
+<!--    <string name="workout_create_toolbar_title">Novi trening</string>-->
+<!--    <string name="workout_create_edit_text_hint_date">Datum</string>-->
+<!--    <string name="workout_create_edit_text_hint_label">Naziv</string>-->
+<!--    <string name="workout_create_edit_text_hint_distance">Distanca</string>-->
+<!--    <string name="workout_create_edit_text_hint_duration">Trajanje</string>-->
+<!--    <string name="workout_create_edit_text_suffix_distance">km</string>-->
+<!--    <string name="workout_create_edit_text_suffix_duration">min</string>-->
+<!--    <string name="workout_create_button_text_create">Napravi</string>-->
+<!--    <string name="workout_create_edit_text_error_empty">Obavezno polje</string>-->
+<!--    <string name="workout_create_edit_text_error_format">Pogrešan format</string>-->
 
-    <!-- Calories -->
-    <string name="calories_toolbar_title">Kalkulator kalorija</string>
-    <string name="calories_edit_text_hint_weight">Težina</string>
-    <string name="calories_edit_text_hint_height">Visina</string>
-    <string name="calories_edit_text_hint_age">Starost</string>
-    <string name="calories_radio_button_text_male">Muško</string>
-    <string name="calories_radio_button_text_female">Žensko</string>
-    <string name="calories_edit_text_hint_duration">Trajanje</string>
-    <string name="calories_button_text_calculate">Izračunaj</string>
-    <string name="calories_button_text_share">Podeli</string>
-    <string name="calories_edit_text_suffix_weight">kg</string>
-    <string name="calories_edit_text_suffix_height">cm</string>
-    <string name="calories_edit_text_suffix_age">god</string>
-    <string name="calories_edit_text_suffix_duration">min</string>
-    <!--    https://developer.android.com/jetpack/compose/resources#strings-->
-    <string name="calories_burned">Potrošeno: %1$s kcal</string>
-    <string name="calories_needed">Potrebno: %1$s kcal</string>
-    <string name="calories_toast_text_error">Pogrešne vrednosti!</string>
-    <string name="calories_intent_mail_subject">Aplikacija za trčanje</string>
-    <string name="calories_intent_mail_text">Potrošio sam %1$s kcal!</string>
-    <string name="calories_intent_chooser_title">Izaberite aplikaciju za deljenje postignutog uspeha</string>
-    <!--     MET (Metabolic equivalent of task) -->
-    <string-array name="met_strings">
-        <item>8 min/km</item>
-        <item>7,5 min/km</item>
-        <item>7 min/km</item>
-        <item>6,5 min/km</item>
-        <item>6 min/km</item>
-        <item>5,5 min/km</item>
-        <item>5 min/km</item>
-        <item>4,5 min/km</item>
-        <item>4 min/km</item>
-    </string-array>
+<!--    &lt;!&ndash; Calories &ndash;&gt;-->
+<!--    <string name="calories_toolbar_title">Kalkulator kalorija</string>-->
+<!--    <string name="calories_edit_text_hint_weight">Težina</string>-->
+<!--    <string name="calories_edit_text_hint_height">Visina</string>-->
+<!--    <string name="calories_edit_text_hint_age">Starost</string>-->
+<!--    <string name="calories_radio_button_text_male">Muško</string>-->
+<!--    <string name="calories_radio_button_text_female">Žensko</string>-->
+<!--    <string name="calories_edit_text_hint_duration">Trajanje</string>-->
+<!--    <string name="calories_button_text_calculate">Izračunaj</string>-->
+<!--    <string name="calories_button_text_share">Podeli</string>-->
+<!--    <string name="calories_edit_text_suffix_weight">kg</string>-->
+<!--    <string name="calories_edit_text_suffix_height">cm</string>-->
+<!--    <string name="calories_edit_text_suffix_age">god</string>-->
+<!--    <string name="calories_edit_text_suffix_duration">min</string>-->
+<!--    &lt;!&ndash;    https://developer.android.com/jetpack/compose/resources#strings&ndash;&gt;-->
+<!--    <string name="calories_burned">Potrošeno: %1$s kcal</string>-->
+<!--    <string name="calories_needed">Potrebno: %1$s kcal</string>-->
+<!--    <string name="calories_toast_text_error">Pogrešne vrednosti!</string>-->
+<!--    <string name="calories_intent_mail_subject">Aplikacija za trčanje</string>-->
+<!--    <string name="calories_intent_mail_text">Potrošio sam %1$s kcal!</string>-->
+<!--    <string name="calories_intent_chooser_title">Izaberite aplikaciju za deljenje postignutog uspeha</string>-->
+<!--    &lt;!&ndash;     MET (Metabolic equivalent of task) &ndash;&gt;-->
+<!--    <string-array name="met_strings">-->
+<!--        <item>8 min/km</item>-->
+<!--        <item>7,5 min/km</item>-->
+<!--        <item>7 min/km</item>-->
+<!--        <item>6,5 min/km</item>-->
+<!--        <item>6 min/km</item>-->
+<!--        <item>5,5 min/km</item>-->
+<!--        <item>5 min/km</item>-->
+<!--        <item>4,5 min/km</item>-->
+<!--        <item>4 min/km</item>-->
+<!--    </string-array>-->
 </resources>

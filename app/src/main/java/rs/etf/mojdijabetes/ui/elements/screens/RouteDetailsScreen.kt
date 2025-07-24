@@ -1,0 +1,67 @@
+//package rs.etf.mojdijabetes.ui.elements.screens
+//
+//import androidx.compose.foundation.layout.Column
+//import androidx.compose.foundation.layout.padding
+//import androidx.compose.foundation.rememberScrollState
+//import androidx.compose.foundation.verticalScroll
+//import androidx.compose.material3.*
+//import androidx.compose.material.icons.Icons
+//import androidx.compose.material.icons.automirrored.filled.ArrowBack
+//import androidx.compose.runtime.Composable
+//import androidx.compose.runtime.collectAsState
+//import androidx.compose.runtime.getValue
+//import androidx.compose.ui.Modifier
+//import androidx.compose.ui.res.stringResource
+//import androidx.compose.ui.unit.dp
+//import androidx.hilt.navigation.compose.hiltViewModel
+//import rs.etf.mojdijabetes.RouteDetails
+//import rs.etf.mojdijabetes.ui.elements.composables.RouteDescriptionHeader
+//import rs.etf.mojdijabetes.ui.stateholders.RouteViewModel
+//
+//@OptIn(ExperimentalMaterial3Api::class)
+//@Composable
+//fun RouteDetailsScreen(
+//    routeIndex: Int,
+//    onNavigateUp: () -> Unit,
+//    modifier: Modifier = Modifier,
+//    viewModel: RouteViewModel = hiltViewModel()
+//) {
+//    val uiState by viewModel.uiState.collectAsState()
+//
+//    val route = uiState.routes[routeIndex]
+//
+//    Scaffold(
+//        topBar = {
+//            TopAppBar(
+//                title = { Text(text = stringResource(id = RouteDetails.topAppBarLabelResId)) },
+//                navigationIcon = {
+//                    IconButton(onClick = { onNavigateUp() }) {
+//                        Icon(
+//                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+//                            contentDescription = null
+//                        )
+//                    }
+//                },
+//            )
+//        },
+//        modifier = modifier,
+//    ) { padding ->
+//        Column(
+//            modifier = modifier
+//                .padding(padding)
+//                .verticalScroll(rememberScrollState()),
+//        ) {
+//            RouteDescriptionHeader(route = route)
+//            Text(
+//                text = stringResource(id = route.description),
+//                style = MaterialTheme.typography.bodyMedium,
+//                modifier = Modifier.padding(
+//                    start = 16.dp,
+//                    top = 8.dp,
+//                    end = 16.dp,
+//                    bottom = 16.dp
+//                ),
+//            )
+//        }
+//    }
+//}

@@ -1,66 +1,65 @@
 <resources>
-    <string name="app_name">Running</string>
+    <string name="app_name">Moj Dijabetes</string>
 
-    <!-- Main -->
-    <string name="main_button_text_calories">Calculate calories</string>
-    <string name="main_button_text_browse">Browse routes</string>
-    <string name="main_navigation_item_title_routes">Routes</string>
-    <string name="main_navigation_item_title_workouts">Workouts</string>
-    <string name="main_navigation_item_title_calories">Calories</string>
+<!--    &lt;!&ndash; Main &ndash;&gt;-->
+<!--    <string name="main_button_text_calories">Calculate calories</string>-->
+<!--    <string name="main_button_text_browse">Browse routes</string>-->
+<!--    <string name="main_navigation_item_title_routes">Routes</string>-->
+<!--    <string name="main_navigation_item_title_workouts">Workouts</string>-->
+<!--    <string name="main_navigation_item_title_calories">Calories</string>-->
 
-    <!-- Routes -->
-    <string name="route_browse_toolbar_title">Walking Routes</string>
-    <string name="route_view_holder_button_text_description">Description</string>
-    <string name="route_view_holder_button_text_location">Location</string>
-    <string name="route_details_toolbar_title">Route Details</string>
+<!--    &lt;!&ndash; Routes &ndash;&gt;-->
+<!--    <string name="route_browse_toolbar_title">Walking Routes</string>-->
+<!--    <string name="route_view_holder_button_text_description">Description</string>-->
+<!--    <string name="route_view_holder_button_text_location">Location</string>-->
+<!--    <string name="route_details_toolbar_title">Route Details</string>-->
 
-    <!-- Workouts -->
-    <string name="workout_list_toolbar_title">Workouts</string>
-    <string name="workout_list_options_menu_title_sort">Sort</string>
-    <string name="workout_list_fab_text_start">Start</string>
-    <string name="workout_list_fab_text_create">Create</string>
-    <string name="workout_create_toolbar_title">New Workout</string>
-    <string name="workout_create_edit_text_hint_date">Date</string>
-    <string name="workout_create_edit_text_hint_label">Label</string>
-    <string name="workout_create_edit_text_hint_distance">Distance</string>
-    <string name="workout_create_edit_text_hint_duration">Duration</string>
-    <string name="workout_create_edit_text_suffix_distance">km</string>
-    <string name="workout_create_edit_text_suffix_duration">min</string>
-    <string name="workout_create_button_text_create">Create</string>
-    <string name="workout_create_edit_text_error_empty">Field is required</string>
-    <string name="workout_create_edit_text_error_format">Wrong format</string>
+<!--    &lt;!&ndash; Workouts &ndash;&gt;-->
+<!--    <string name="workout_list_toolbar_title">Workouts</string>-->
+<!--    <string name="workout_list_options_menu_title_sort">Sort</string>-->
+<!--    <string name="workout_list_fab_text_start">Start</string>-->
+<!--    <string name="workout_list_fab_text_create">Create</string>-->
+<!--    <string name="workout_create_toolbar_title">New Workout</string>-->
+<!--    <string name="workout_create_edit_text_hint_date">Date</string>-->
+<!--    <string name="workout_create_edit_text_hint_label">Label</string>-->
+<!--    <string name="workout_create_edit_text_hint_distance">Distance</string>-->
+<!--    <string name="workout_create_edit_text_hint_duration">Duration</string>-->
+<!--    <string name="workout_create_edit_text_suffix_distance">km</string>-->
+<!--    <string name="workout_create_edit_text_suffix_duration">min</string>-->
+<!--    <string name="workout_create_button_text_create">Create</string>-->
+<!--    <string name="workout_create_edit_text_error_empty">Field is required</string>-->
+<!--    <string name="workout_create_edit_text_error_format">Wrong format</string>-->
 
-    <!-- Calories -->
-    <string name="calories_toolbar_title">Calories Calculator</string>
-    <string name="calories_edit_text_hint_weight">Weight</string>
-    <string name="calories_edit_text_hint_height">Height</string>
-    <string name="calories_edit_text_hint_age">Age</string>
-    <string name="calories_radio_button_text_male">Male</string>
-    <string name="calories_radio_button_text_female">Female</string>
-    <string name="calories_edit_text_hint_duration">Duration</string>
-    <string name="calories_button_text_calculate">Calculate</string>
-    <string name="calories_button_text_share">Share</string>
-    <string name="calories_edit_text_suffix_weight">kg</string>
-    <string name="calories_edit_text_suffix_height">cm</string>
-    <string name="calories_edit_text_suffix_age">year</string>
-    <string name="calories_edit_text_suffix_duration">min</string>
-    <!--    https://developer.android.com/jetpack/compose/resources#strings-->
-    <string name="calories_burned">Burned: %1$s kcal</string>
-    <string name="calories_needed">Needed: %1$s kcal</string>
-    <string name="calories_toast_text_error">Wrong values!</string>
-    <string name="calories_intent_mail_subject">Running Application</string>
-    <string name="calories_intent_mail_text">I have burned %1$s kcal!</string>
-    <string name="calories_intent_chooser_title">Choose application to share the achievement</string>
-    <!--     MET (Metabolic equivalent of task) -->
+<!--    &lt;!&ndash; Calories &ndash;&gt;-->
+<!--    <string name="calories_toolbar_title">Calories Calculator</string>-->
+<!--    <string name="calories_edit_text_hint_weight">Weight</string>-->
+<!--    <string name="calories_edit_text_hint_height">Height</string>-->
+<!--    <string name="calories_edit_text_hint_age">Age</string>-->
+<!--    <string name="calories_radio_button_text_male">Male</string>-->
+<!--    <string name="calories_radio_button_text_female">Female</string>-->
+<!--    <string name="calories_edit_text_hint_duration">Duration</string>-->
+<!--    <string name="calories_button_text_calculate">Calculate</string>-->
+<!--    <string name="calories_button_text_share">Share</string>-->
+<!--    <string name="calories_edit_text_suffix_weight">kg</string>-->
+<!--    <string name="calories_edit_text_suffix_height">cm</string>-->
+<!--    <string name="calories_edit_text_suffix_age">year</string>-->
+<!--    <string name="calories_edit_text_suffix_duration">min</string>-->
+<!--    &lt;!&ndash;    https://developer.android.com/jetpack/compose/resources#strings&ndash;&gt;-->
+<!--    <string name="calories_burned">Burned: %1$s kcal</string>-->
+<!--    <string name="calories_needed">Needed: %1$s kcal</string>-->
+<!--    <string name="calories_toast_text_error">Wrong values!</string>-->
+<!--    <string name="calories_intent_mail_subject">Running Application</string>-->
+<!--    <string name="calories_intent_mail_text">I have burned %1$s kcal!</string>-->
+<!--    <string name="calories_intent_chooser_title">Choose application to share the achievement</string>-->
+<!--    &lt;!&ndash;     MET (Metabolic equivalent of task) &ndash;&gt;-->
     <string-array name="met_strings">
-        <item>8 min/km</item>
-        <item>7,5 min/km</item>
-        <item>7 min/km</item>
-        <item>6,5 min/km</item>
-        <item>6 min/km</item>
-        <item>5,5 min/km</item>
-        <item>5 min/km</item>
-        <item>4,5 min/km</item>
-        <item>4 min/km</item>
+        <item>Novorapid</item>
+        <item>Tresiba</item>
+        <item>Levemir</item>
+        <item>Lantus</item>
+        <item>Insulatard</item>
+        <item>Aktrapid</item>
+        <item>Fiasp</item>
+        <item>Tuze</item>
     </string-array>
 </resources>

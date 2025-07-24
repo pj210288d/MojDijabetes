@@ -13,6 +13,9 @@ navigationComposeHilt = "1.2.0"
 activityCompose = "1.9.2"
 composeBom = "2024.10.00"
 roomDatabase = "2.6.1"
+datastore = "1.0.0"
+vico = "1.11.1"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -42,6 +45,15 @@ androidx-room-ktx = { group = "androidx.room", name ="room-ktx", version.ref = "
 androidx-room-compiler = { group = "androidx.room", name ="room-compiler", version.ref = "roomDatabase" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltDi" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hiltDi" }
+androidx-datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
+vico-compose = { group = "com.patrykandpatrick.vico", name = "compose", version.ref = "vico" }
+
+# For Material 2 theming in Jetpack Compose.
+vico-compose-m2 = { group = "com.patrykandpatrick.vico", name = "compose-m2", version.ref = "vico" }
+
+# For Material 3 theming in Jetpack Compose.
+vico-compose-m3 = { group = "com.patrykandpatrick.vico", name = "compose-m3", version.ref = "vico" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

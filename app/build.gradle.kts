@@ -8,12 +8,12 @@ plugins {
 }
 
 android {
-    namespace = "rs.etf.running"
+    namespace = "rs.etf.mojdijabetes"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "rs.etf.running"
-        minSdk = 24
+        applicationId = "rs.etf.mojdijabetes"
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -65,9 +65,8 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-
+    implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.material3.window.size)
-
     implementation(libs.androidx.navigation.compose)
 
     implementation(libs.androidx.material.icons.extended)
@@ -79,4 +78,8 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+    implementation(libs.vico.compose)
+    implementation(libs.vico.compose.m2)
+    implementation(libs.vico.compose.m3)
+    implementation("co.yml:ycharts:2.1.0")
 }
