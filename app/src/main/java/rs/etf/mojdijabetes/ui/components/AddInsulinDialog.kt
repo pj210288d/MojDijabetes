@@ -38,6 +38,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.res.stringResource
+import rs.etf.mojdijabetes.R
 import androidx.core.graphics.set
 import androidx.hilt.navigation.compose.hiltViewModel
 import rs.etf.mojdijabetes.ui.viewmodel.AddInsulinViewModel
@@ -113,7 +115,7 @@ fun AddInsulinDialog(
                         readOnly = true,
                         trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
                         modifier = Modifier.menuAnchor().fillMaxWidth(),
-                        label = { Text("Insulin") }
+                        label = { Text(stringResource(R.string.insulin)) }
                     )
 
                     ExposedDropdownMenu(
@@ -131,7 +133,7 @@ fun AddInsulinDialog(
                             )
                         }
                         DropdownMenuItem(
-                            text = { Text("Bez insulina") },
+                            text = { Text(stringResource(R.string.no_insulin)) },
                             onClick = {
                                 selectedInsulin = "Bez insulina"
                                 viewModel.onInsulinNameChange("Bez insulina")
@@ -183,7 +185,7 @@ fun AddInsulinDialog(
                     },
                     enabled = selectedInsulin.isNotEmpty() && insulinAmount >= 0
                 ) {
-                    Text("Dodaj")
+                    Text(stringResource(R.string.add))
                 }
             }
         }
@@ -201,12 +203,12 @@ fun AddInsulinDialog(
                     }
                     showDatePicker = false
                 }) {
-                    Text("Potvrdi")
+                    Text(stringResource(R.string.confirm))
                 }
             },
             dismissButton = {
                 Button(onClick = { showDatePicker = false }) {
-                    Text("Odustani")
+                    Text(stringResource(R.string.cancel_action))
                 }
             }
         ) {

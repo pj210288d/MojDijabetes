@@ -23,6 +23,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import rs.etf.mojdijabetes.R
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
@@ -55,6 +56,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.*
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Canvas
 import androidx.compose.ui.graphics.Color
@@ -141,7 +143,7 @@ fun HomeScreen(
     val animatedSwipeOffset by animateFloatAsState(
         targetValue = swipeOffset,
         animationSpec = tween(durationMillis = 300, easing = FastOutSlowInEasing),
-        label = "swipe_animation"
+        label = stringResource(R.string.animation_label)
     ) { swipeOffset = 0f }
 
     // Function to change date
@@ -222,6 +224,7 @@ fun HomeScreen(
         // Add real glucose entries
         for (glucoseEntry in sortedEntries) {
             Log.d("Filtrirani", "x = ${glucoseEntry.dateTime}, y = ${glucoseEntry.value}")
+            Log.d("UserEmail", "user email: = ${currentUserEmail}")
             val calendar = Calendar.getInstance().apply {
                 timeInMillis = glucoseEntry.dateTime
             }
@@ -272,12 +275,12 @@ fun HomeScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Moj Dijabetes") },
+                title = { Text(stringResource(id = R.string.app_name)) },
                 actions = {
                     IconButton(onClick = onNavigateToProfile) {
                         Icon(
                             imageVector = Icons.Default.Person,
-                            contentDescription = "Profil"
+                            contentDescription = stringResource(R.string.profile_icon)
                         )
                     }
                 }
@@ -334,7 +337,7 @@ fun HomeScreen(
                 },
         ) {
             Text(
-                text = "Moj Dijabetes - Početna",
+                text = stringResource(R.string.homeScreen_title),
                 style = MaterialTheme.typography.headlineMedium,
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
             )
@@ -354,7 +357,7 @@ fun HomeScreen(
                 ) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = "Previous day",
+                        contentDescription = stringResource(id = R.string.homeScreen_title),
                         tint = MaterialTheme.colorScheme.primary
                     )
                 }
@@ -374,14 +377,14 @@ fun HomeScreen(
                         Text(text = dateFormat.format(Date(selectedDate)))
                         Icon(
                             imageVector = Icons.Default.DateRange,
-                            contentDescription = "Odaberi datum",
+                            contentDescription = stringResource(R.string.choose_date),
                             modifier = Modifier.padding(start = 8.dp)
                         )
                     }
 
                     // Swipe hint text
                     Text(
-                        text = "← Swipe to change date →",
+                        text = stringResource(R.string.swipe_label),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.padding(top = 4.dp)
@@ -395,7 +398,7 @@ fun HomeScreen(
                 ) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-                        contentDescription = "Next day",
+                        contentDescription = stringResource(R.string.next_day),
                         tint = MaterialTheme.colorScheme.primary
                     )
                 }
@@ -410,12 +413,12 @@ fun HomeScreen(
                             showDatePickerDialog = false
                             selectedDate = datePickerState.selectedDateMillis ?: selectedDate
                         }) {
-                            Text("OK")
+                            Text(stringResource(R.string.ok))
                         }
                     },
                     dismissButton = {
                         Button(onClick = { showDatePickerDialog = false }) {
-                            Text("Cancel")
+                            Text(stringResource(R.string.cancel))
                         }
                     }
                 ) {
@@ -436,28 +439,28 @@ fun HomeScreen(
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text("Average", style = MaterialTheme.typography.bodyMedium)
+                        Text(stringResource(R.string.average), style = MaterialTheme.typography.bodyMedium)
                         Text(
                             String.format("%.1f", avgGlucose),
                             style = MaterialTheme.typography.titleMedium
                         )
                     }
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text("Min", style = MaterialTheme.typography.bodyMedium)
+                        Text(stringResource(R.string.min), style = MaterialTheme.typography.bodyMedium)
                         Text(
                             minGlucose.toString(),
                             style = MaterialTheme.typography.titleMedium
                         )
                     }
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text("Max", style = MaterialTheme.typography.bodyMedium)
+                        Text(stringResource(R.string.max), style = MaterialTheme.typography.bodyMedium)
                         Text(
                             maxGlucose.toString(),
                             style = MaterialTheme.typography.titleMedium
                         )
                     }
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text("Readings", style = MaterialTheme.typography.bodyMedium)
+                        Text(stringResource(R.string.readings), style = MaterialTheme.typography.bodyMedium)
                         Text(
                             filteredGlucoseEntries.size.toString(),
                             style = MaterialTheme.typography.titleMedium
@@ -469,7 +472,7 @@ fun HomeScreen(
             // Glucose entries list
             if (filteredGlucoseEntries.isNotEmpty()) {
                 Text(
-                    text = "Glucose Readings",
+                    text = stringResource(R.string.gluc_readings),
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
                 )
@@ -505,14 +508,14 @@ fun HomeScreen(
                     )
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(
-                        text = "No glucose readings for selected date",
+                        text = stringResource(R.string.no_gluc_readings),
                         style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         textAlign = TextAlign.Center
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = "Tap the + button to add a reading",
+                        text = stringResource(R.string.add_gluc_readings),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         textAlign = TextAlign.Center
@@ -587,9 +590,9 @@ fun GlucoseEntryItem(entry: GlucoseEntry) {
                     )
                     Text(
                         text = when {
-                            glucoseValue < 4.0f -> "Low"
-                            glucoseValue > 10.0f -> "High"
-                            else -> "Normal"
+                            glucoseValue < 4.0f -> stringResource(R.string.low)
+                            glucoseValue > 10.0f -> stringResource(R.string.high)
+                            else -> stringResource(R.string.normal)
                         },
                         style = MaterialTheme.typography.bodySmall,
                         color = textColor.copy(alpha = 0.7f)
@@ -661,7 +664,7 @@ fun GlucoseEntryItem(entry: GlucoseEntry) {
                         ) {
                             Icon(
                                 imageVector = Icons.Default.Restaurant,
-                                contentDescription = "Meal",
+                                contentDescription = stringResource(R.string.meal),
                                 tint = textColor.copy(alpha = 0.8f),
                                 modifier = Modifier.size(16.dp)
                             )

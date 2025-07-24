@@ -27,6 +27,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
+import rs.etf.mojdijabetes.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -37,7 +39,7 @@ fun ProfileScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Profil") },
+                title = { Text(stringResource(R.string.profile)) },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
                         Icon(
@@ -89,7 +91,7 @@ fun ProfileScreen(
                             imageVector = Icons.AutoMirrored.Filled.Logout,
                             contentDescription = null
                         )
-                        Text("Odjavi se")
+                        Text(stringResource(R.string.sign_out))
                     }
                 }
             }

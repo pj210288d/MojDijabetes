@@ -13,7 +13,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.ui.res.stringResource
-
+import rs.etf.mojdijabetes.R
 @Composable
 fun SignOutButton(
     onSignOut: () -> Unit
@@ -31,7 +31,7 @@ fun SignOutButton(
             onDismissRequest = { showMenu = false }
         ) {
             DropdownMenuItem(
-                text = { Text("Sign Out") },
+                text = { Text(stringResource(R.string.sign_out)) },
                 onClick = {
                     onSignOut()
                     showMenu = false

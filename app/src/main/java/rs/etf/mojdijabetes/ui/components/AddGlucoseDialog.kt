@@ -1,6 +1,7 @@
 package rs.etf.mojdijabetes.ui.components
 import android.annotation.SuppressLint
 import android.util.Log
+import rs.etf.mojdijabetes.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.draggable
@@ -47,6 +48,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
@@ -130,7 +132,7 @@ fun AddGlucoseDialog(
                             viewModel.onValueChange(it)
                         }
                     },
-                    label = { Text("Vrednost") },
+                    label = { Text(stringResource(R.string.value)) },
                     modifier = Modifier.fillMaxWidth(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal)
                 )
@@ -159,7 +161,7 @@ fun AddGlucoseDialog(
                         value = selectedInsulin,
                         onValueChange = {},
                         readOnly = true,
-                        label = { Text("Izaberi insulin") },
+                        label = { Text(stringResource(R.string.select_insulin)) },
                         trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
                         modifier = Modifier.menuAnchor()
                     )
@@ -169,7 +171,7 @@ fun AddGlucoseDialog(
                         onDismissRequest = { expanded = false }
                     ) {
                         DropdownMenuItem(
-                            text = { Text("Bez insulina") },
+                            text = { Text(stringResource(R.string.no_insulin)) },
                             onClick = {
                                 selectedInsulin = "Bez insulina"
                                 viewModel.onInsulinNameChange("Bez insulina")
@@ -217,7 +219,7 @@ fun AddGlucoseDialog(
                 OutlinedTextField(
                     value = state.meal,
                     onValueChange = { viewModel.onMealChange(it) },
-                    label = { Text("Obrok") },
+                    label = { Text(stringResource(R.string.meal)) },
                     modifier = Modifier.fillMaxWidth()
                 )
 
@@ -238,7 +240,7 @@ fun AddGlucoseDialog(
                     },
                     enabled = state.value.isNotEmpty()
                 ) {
-                    Text("Dodaj")
+                    Text(stringResource(R.string.add))
                 }
             }
         }
@@ -256,12 +258,12 @@ fun AddGlucoseDialog(
                     showDatePicker = false
                     selectedDate = Date(datePickerState.selectedDateMillis!!)
                 }) {
-                    Text("OK")
+                    Text(stringResource(R.string.ok))
                 }
             },
             dismissButton = {
                 TextButton(onClick = { showDatePicker = false }) {
-                    Text("Otkaži")
+                    Text(stringResource(R.string.cancel))
                 }
             }
         ) {

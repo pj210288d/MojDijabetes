@@ -22,8 +22,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-
+import rs.etf.mojdijabetes.R
 @Composable
 fun ExpandedFabMenu(
     expanded: Boolean,
@@ -57,7 +58,7 @@ fun ExpandedFabMenu(
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text("Glikemija")
+                        Text(stringResource(R.string.glucose))
                         Icon(Icons.Default.Bloodtype, contentDescription = null)
                     }
                 }
@@ -74,7 +75,7 @@ fun ExpandedFabMenu(
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text("Insulin")
+                        Text(stringResource(R.string.insulin))
                         Icon(Icons.Default.Medication, contentDescription = null)
                     }
                 }
@@ -91,7 +92,7 @@ fun ExpandedFabMenu(
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text("Obrok")
+                        Text(stringResource(R.string.meal))
                         Icon(Icons.Default.Restaurant, contentDescription = null)
                     }
                 }

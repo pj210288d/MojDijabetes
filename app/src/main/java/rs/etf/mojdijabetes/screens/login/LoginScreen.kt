@@ -14,6 +14,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.compose.ui.res.stringResource
+import rs.etf.mojdijabetes.R
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
@@ -50,7 +52,7 @@ fun LoginScreen(
             OutlinedTextField(
                 value = state.email,
                 onValueChange = { viewModel.onEvent(LoginEvent.EmailChanged(it)) },
-                label = { Text("Email") },
+                label = { Text(stringResource(R.string.email)) },
                 modifier = Modifier.fillMaxWidth(),
                 isError = state.errorMessage?.contains("email") == true
             )
@@ -61,7 +63,7 @@ fun LoginScreen(
             OutlinedTextField(
                 value = state.password,
                 onValueChange = { viewModel.onEvent(LoginEvent.PasswordChanged(it)) },
-                label = { Text("Lozinka") },
+                label = { Text(stringResource(R.string.password)) },
                 visualTransformation = PasswordVisualTransformation(),
                 modifier = Modifier.fillMaxWidth(),
                 isError = state.errorMessage?.contains("lozinka") == true
@@ -73,7 +75,7 @@ fun LoginScreen(
                 OutlinedTextField(
                     value = state.confirmPassword,
                     onValueChange = { viewModel.onEvent(LoginEvent.ConfirmPasswordChanged(it)) },
-                    label = { Text("Potvrdi lozinku") },
+                    label = { Text(stringResource(R.string.confirm_password)) },
                     visualTransformation = PasswordVisualTransformation(),
                     modifier = Modifier.fillMaxWidth(),
                     isError = state.errorMessage?.contains("poklapaju") == true
@@ -88,21 +90,21 @@ fun LoginScreen(
                 OutlinedTextField(
                     value = state.firstName,
                     onValueChange = { viewModel.onEvent(LoginEvent.FirstNameChanged(it)) },
-                    label = { Text("Ime") },
+                    label = { Text(stringResource(R.string.first_name)) },
                     modifier = Modifier.fillMaxWidth()
                 )
 
                 OutlinedTextField(
                     value = state.lastName,
                     onValueChange = { viewModel.onEvent(LoginEvent.LastNameChanged(it)) },
-                    label = { Text("Prezime") },
+                    label = { Text(stringResource(R.string.last_name)) },
                     modifier = Modifier.fillMaxWidth()
                 )
 
                 OutlinedTextField(
                     value = state.age,
                     onValueChange = { viewModel.onEvent(LoginEvent.AgeChanged(it)) },
-                    label = { Text("Godine") },
+                    label = { Text(stringResource(R.string.age)) },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -132,7 +134,7 @@ fun LoginScreen(
                             OutlinedTextField(
                                 value = state.currentInsulin,
                                 onValueChange = { viewModel.onEvent(LoginEvent.CurrentInsulinChanged(it)) },
-                                label = { Text("Naziv insulina") },
+                                label = { Text(stringResource(R.string.insulin_name)) },
                                 modifier = Modifier.weight(1f)
                             )
 
